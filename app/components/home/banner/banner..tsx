@@ -28,7 +28,7 @@ export default function Banner() {
       <div className="flex justify-center mt-[60px] lg:mt-[100px] px-6">
         <div className="max-w-[1400px] w-full">
           {/* Texto responsivo: Mobile (50px) -> Tablet (80px) -> Notebook (100px+) */}
-          <h1 className="text-[45px] md:text-[80px] lg:text-[100px] leading-[0.9] md:leading-[0.8] tracking-tighter">
+          <h1 className="text-[45px] text-center md:text-[80px]  lg:text-[100px] leading-[0.9] md:leading-[0.8] tracking-tighter">
             <span className="font-bold">Marketing que </span>
             <br className="hidden md:block" />
             <span className="text-[#432CF3]"> impulsiona,</span>

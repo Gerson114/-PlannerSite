@@ -4,13 +4,17 @@ import { Instagram, Facebook, Linkedin } from "lucide-react" // Certifique-se de
 
 export default function Footer() {
     return (
-        <footer className="flex justify-center bg-[#432CF3] py-12">
+        <>
+        <hr className="w-full border-[#DADADA]  " />
+        <footer className="flex justify-center bg-white py-12">
+            
             <div className="max-w-[1400px] w-full px-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 p-8 text-white">
+               
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 p-8 text-black">
 
                     {/* Logo */}
                     <div className="flex flex-col items-start">
-                        <Image src={Logo} alt="Logo" width={180} height={130} className="brightness-0 invert" />
+                        <Image src={Logo} alt="Logo" width={180} height={130} className="brightness-0 " />
                         <p className="mt-6 text-sm opacity-70 leading-relaxed">
                             Transformando ideias em resultados digitais de alto impacto.
                         </p>
@@ -72,5 +76,7 @@ export default function Footer() {
                 </div>
             </div>
         </footer>
+        
+         </>
     )
 }
