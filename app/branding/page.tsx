@@ -7,13 +7,12 @@ import Identidade from "../components/brandings/identidade/identidade";
 import Servicos from "../components/brandings/servicos/servicos";
 import HeaderMobile from "../components/header-mobile";
 
-import Headertop from "../components/header/header";
 
 
 export default function Branding() {
     return (
         <>
-            <Headertop />
+            
             <HeaderMobile />
             <Banner/>
             <Construir/>
@@ -22,6 +21,7 @@ export default function Branding() {
             <ComoFazemos/>
             <Servicos/>
             <Faq/>
+            
            
             
 

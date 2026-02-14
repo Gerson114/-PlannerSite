@@ -48,7 +48,7 @@ export default function Banner() {
 
                     {/* Banner Azul Desktop */}
                     <div
-                        className="bg-blue-900 h-[600px] text-white relative z-10 flex flex-col justify-end overflow-hidden"
+                        className="bg-[#432CF3] h-[600px] text-white relative z-10 flex flex-col justify-end overflow-hidden"
                         style={{ clipPath: "url(#bannerClipDesktop)" }}
                     >
                         <h2 className="font-bold tracking-tighter leading-[0.85] text-[100px] lg:text-[150px] -ml-4 -mb-2">
