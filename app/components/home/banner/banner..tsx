@@ -62,7 +62,7 @@ export default function Banner() {
 
       {/* Seção dos Cards */}
       <div className="flex justify-center mt-[60px] lg:mt-[100px] flex-col items-center overflow-hidden">
-        <div className="max-w-[1400px] w-full px-0">
+        <div className="max-w-[1400px] hidden  w-full px-0">
           
           <motion.div 
             ref={scrollRef}

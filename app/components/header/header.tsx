@@ -28,7 +28,6 @@ export default function Headertop() {
         { name: "Sobre", href: "/Quem-Somos" },
         { name: "Cases", href: "/portifolio" },
         { name: "Soluções", href: "/branding" }, 
-        { name: "Blog", href: "/blog" },
         { name: "Contato", href: "/contato" },
     ];
 
