@@ -50,7 +50,7 @@ export default function Headertop() {
 
     return (
         <div ref={headerRef} className="relative z-[999]">
-            <nav className="flex justify-center py-4 md:py-6 bg-white w-full z-50 relative">
+            <nav className="flex justify-center py-0  bg-white w-full z-50 relative">
                 <div className="max-w-[1800px] w-full px-4 sm:px-6">
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <div className="flex justify-between items-center w-full md:w-auto">
@@ -73,22 +73,35 @@ export default function Headertop() {
 
                         <div className={`${isOpen ? "max-h-[500px] opacity-100 mt-6" : "max-h-0 opacity-0 md:opacity-100 md:max-h-full"} overflow-hidden md:overflow-visible transition-all duration-500 flex flex-col md:flex-row items-center md:gap-20 w-full md:w-auto`}>
                             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-20 text-[19px] font-semibold text-black">
-                                <Link onClick={() => setactive(active === "solucao" ? null : "solucao")} href="#" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${active === "solucao" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
-                                    Soluções
-                                    <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${active === "solucao" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-                                </Link>
+
+                                <div onMouseEnter={() => setactive("solucao")} className={`transition-colors duration-300 p-10 ${active === "solucao" ? 'bg-[#F3F7FA]' : 'hover:bg-[#F3F7FA]'}`}>
+                                    <Link onClick={() => setactive(active === "solucao" ? null : "solucao")} href="#" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${active === "solucao" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
+                                        Soluções
+                                        <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${active === "solucao" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                                    </Link>
+                                </div>
+
+
                                 <Link href="/portifolio" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${pathname === "/portifolio" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                     Cases
                                     <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${pathname === "/portifolio" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                                 </Link>
-                                <Link onClick={() => setactive(active === "sobre" ? null : "sobre")} href="#" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${active === "sobre" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
-                                    Sobre
-                                    <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${active === "sobre" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-                                </Link>
+
+
+                                <div onMouseEnter={() => setactive("sobre")} className={`transition-colors duration-300 p-10 ${active === "sobre" ? 'bg-[#F3F7FA]' : 'hover:bg-[#F3F7FA]'}`}>
+                                    <Link onClick={() => setactive(active === "sobre" ? null : "sobre")} href="#" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${active === "sobre" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
+                                        Sobre
+                                        <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${active === "sobre" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                                    </Link>
+                                </div>
+
+
                                 <Link href="/blog" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${pathname === "/blog" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                     Blog
                                     <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${pathname === "/blog" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                                 </Link>
+
+
                                 <Link href="/contato" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${pathname === "/contato" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                     Contato
                                     <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${pathname === "/contato" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
@@ -119,8 +132,8 @@ export default function Headertop() {
 
 
 
-            <div className={`hidden md:flex justify-center absolute left-0 w-full z-[100] transition-all duration-500 ease-in-out transform ${active ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
-                <div className="max-w-[1400px] w-full mt-0 p-8 bg-[#F3F7FA] rounded shadow-2xl">
+            <div onMouseLeave={() => setactive(null)} className={`hidden md:flex justify-center absolute left-0 w-full z-[100] transition-all duration-500 ease-in-out transform ${active ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
+                <div className="max-w-[1400px] w-full mt-0 p-8 bg-[#F3F7FA] rounded ">
                     <div className="flex flex-col md:flex-row justify-center gap-6 items-stretch w-full">
                         <div className={`bg-white rounded-[8px] text-[16px] px-8 font-normal py-10 text-left space-y-4 shadow-sm ${active === "solucao" ? "w-[320px]" : "min-w-[280px]"}`}>
                             <p className="text-[17px] font-bold">
@@ -212,7 +225,7 @@ export default function Headertop() {
                         {active === "solucao" && (
                             <div className="bg-white rounded-[8px] text-[16px] px-8 font-normal py-10 text-left space-y-4 shadow-sm w-[320px]">
                                 <p className="text-[17px] font-bold  tracking-wider text-black">
-                                   Growth & <br /> Performance
+                                    Growth & <br /> Performance
                                 </p>
 
                                 <hr className="w-full border border-[#DADADA]" />
@@ -307,7 +320,7 @@ export default function Headertop() {
                         {active === "solucao" && (
                             <div className="bg-white rounded-[8px] text-[16px] px-8 font-normal py-10 text-left space-y-4 shadow-sm w-[320px]">
                                 <p className="text-[17px] font-bold  tracking-wider text-black">
-                                   IA, Customer Experience &  Gestão de Atendimento
+                                    IA, Customer Experience &  Gestão de Atendimento
                                 </p>
 
                                 <hr className="w-full border border-[#DADADA]" />
