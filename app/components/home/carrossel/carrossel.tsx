@@ -82,7 +82,7 @@ export default function Carrossel() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => changeSlide(dir)} 
-                className="flex items-center justify-center rounded-xl border border-gray-300 w-[50px] h-[50px] md:w-[55px] md:h-[55px] hover:border-[#432CF3] hover:text-[#432CF3] transition-colors"
+                className="flex items-center justify-center rounded-[8px] border border-gray-300 w-[50px] h-[50px] md:w-[55px] md:h-[55px] hover:border-[#432CF3] hover:text-[#432CF3] transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`w-6 h-6 ${dir === -1 ? 'rotate-180' : ''}`}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -112,7 +112,7 @@ export default function Carrossel() {
               <motion.div 
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.5 }}
-                className="w-full h-[300px] md:h-full min-h-[300px] md:min-h-[500px] bg-gray-100 rounded-[30px] md:rounded-[40px] flex items-center justify-center text-gray-400 border border-gray-200 overflow-hidden shadow-inner"
+                className="w-full h-[300px] md:h-full min-h-[300px] md:min-h-[500px] bg-gray-100 rounded-[8px] flex items-center justify-center text-gray-400 border border-gray-200 overflow-hidden shadow-inner"
               >
                 <motion.span 
                   initial={{ scale: 0.8, opacity: 0 }}
@@ -158,7 +158,7 @@ export default function Carrossel() {
                         <motion.a 
                           whileHover={{ rotate: 15, scale: 1.1 }}
                           href={cases[currentIndex].link} 
-                          className="flex items-center justify-center rounded-xl border border-gray-300 w-[55px] h-[55px] hover:bg-gray-50 transition-colors shadow-sm"
+                          className="flex items-center justify-center rounded-[8px] border border-gray-300 w-[55px] h-[55px] hover:bg-gray-50 transition-colors shadow-sm"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />

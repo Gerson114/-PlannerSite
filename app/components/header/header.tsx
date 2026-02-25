@@ -49,7 +49,7 @@ export default function Headertop() {
     };
 
     return (
-        <div ref={headerRef} className="relative z-[999]">
+        <div ref={headerRef} className="hidden md:block relative z-[999]">
             <nav className="flex justify-center py-0  bg-white w-full z-50 relative">
                 <div className="max-w-[1800px] w-full px-4 sm:px-6">
                     <div className="flex flex-col md:flex-row justify-between items-center">
@@ -74,7 +74,7 @@ export default function Headertop() {
                         <div className={`${isOpen ? "max-h-[500px] opacity-100 mt-6" : "max-h-0 opacity-0 md:opacity-100 md:max-h-full"} overflow-hidden md:overflow-visible transition-all duration-500 flex flex-col md:flex-row items-center md:gap-20 w-full md:w-auto`}>
                             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-20 text-[19px] font-semibold text-black">
 
-                                <div onMouseEnter={() => setactive("solucao")} className={`transition-colors duration-300 p-10 ${active === "solucao" ? 'bg-[#F3F7FA]' : 'hover:bg-[#F3F7FA]'}`}>
+                                <div onMouseEnter={() => setactive("solucao")} className={`hidden md:block transition-colors duration-300 p-10 ${active === "solucao" ? 'bg-[#F3F7FA]' : 'hover:bg-[#F3F7FA]'}`}>
                                     <Link onClick={() => setactive(active === "solucao" ? null : "solucao")} href="#" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${active === "solucao" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                         Soluções
                                         <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${active === "solucao" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
@@ -88,7 +88,7 @@ export default function Headertop() {
                                 </Link>
 
 
-                                <div onMouseEnter={() => setactive("sobre")} className={`transition-colors duration-300 p-10 ${active === "sobre" ? 'bg-[#F3F7FA]' : 'hover:bg-[#F3F7FA]'}`}>
+                                <div onMouseEnter={() => setactive("sobre")} className={`hidden md:block transition-colors duration-300 p-10 ${active === "sobre" ? 'bg-[#F3F7FA]' : 'hover:bg-[#F3F7FA]'}`}>
                                     <Link onClick={() => setactive(active === "sobre" ? null : "sobre")} href="#" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${active === "sobre" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                         Sobre
                                         <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${active === "sobre" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
@@ -110,7 +110,7 @@ export default function Headertop() {
                         </div>
 
                         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-20 text-[19px] font-semibold text-black">
-                            <button className="bg-black text-white py-[8px] px-[23px] rounded-[15px] flex items-center gap-2 group hover:bg-[#1a1a1a] transition-all">
+                            <button className="bg-black text-white py-[8px] px-[23px] rounded-[8px] flex items-center gap-2 group hover:bg-[#1a1a1a] transition-all">
                                 <span className="text-[17px] font-medium">Fale Conosco</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 group-hover:translate-x-1 transition-transform">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -132,8 +132,8 @@ export default function Headertop() {
 
 
 
-            <div onMouseLeave={() => setactive(null)} className={`hidden md:flex justify-center absolute left-0 w-full z-[100] transition-all duration-500 ease-in-out transform ${active ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
-                <div className="max-w-[1400px] w-full mt-0 p-8 bg-[#F3F7FA] rounded ">
+            <div className={`hidden md:flex justify-center absolute left-0 w-full z-[100] transition-all duration-500 ease-in-out transform ${active ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
+                <div onMouseLeave={() => setactive(null)} className="max-w-[1400px] w-full mt-0 p-8 bg-[#F3F7FA] rounded ">
                     <div className="flex flex-col md:flex-row justify-center gap-6 items-stretch w-full">
                         <div className={`bg-white rounded-[8px] text-[16px] px-8 font-normal py-10 text-left space-y-4 shadow-sm ${active === "solucao" ? "w-[320px]" : "min-w-[280px]"}`}>
                             <p className="text-[17px] font-bold">
@@ -509,7 +509,7 @@ export default function Headertop() {
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                                             </svg>
                                         </div>
-                                        <button className="p-3 px-6 font-bold bg-[#2CF376] rounded-[25px] hover:brightness-105 transition-all">
+                                        <button className="p-3 px-6 font-bold bg-[#2CF376] rounded-[8px] hover:brightness-105 transition-all">
                                             Saiba mais
                                         </button>
                                     </div>
@@ -525,14 +525,20 @@ export default function Headertop() {
                 </div>
             </div>
 
-            <div className={`fixed right-0 top-1/2 -translate-y-1/2 z-[100] transition-all duration-700 ${showScrollButton ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                <button onClick={scrollToTop} className="flex flex-col items-center gap-4 bg-[#432CF3] text-white py-8 px-3 rounded-l-2xl shadow-2xl hover:pl-6 transition-all group">
+            <div className={`fixed right-8 top-1/2 -translate-y-1/2 z-[100] transition-all duration-700 ${showScrollButton ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                <button onClick={scrollToTop} className="flex flex-col items-center gap-4 bg-white text-black py-8 px-3 rounded-[8px] border border-gray-300 shadow-lg hover:border-[#432CF3] hover:text-[#432CF3] transition-all group">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5 group-hover:-translate-y-2 transition-transform">
-                        <path d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
                     </svg>
                     <span className="font-bold text-[10px] tracking-[0.2em] uppercase whitespace-nowrap" style={{ writingMode: 'vertical-rl' }}>ROLAR PARA CIMA</span>
                 </button>
             </div>
+
+            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="hidden md:flex fixed right-8 bottom-8 z-[100] bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#20BA5A] transition-all hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+            </a>
         </div>
     );
 }

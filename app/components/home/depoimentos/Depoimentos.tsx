@@ -45,8 +45,8 @@ export default function Depoimentos() {
   // Variantes para os elementos internos (Stagger effect)
   const contentVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }
     }
@@ -64,10 +64,10 @@ export default function Depoimentos() {
   return (
     <section className="flex justify-center overflow-hidden w-full bg-white">
       <div className="max-w-[1400px] w-full px-4 sm:px-6 md:px-0 py-12 md:py-24">
-        
+
         {/* Cabeçalho */}
         <div className="flex flex-row justify-between items-center mb-8 md:mb-12">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -75,15 +75,15 @@ export default function Depoimentos() {
           >
             Depoimentos
           </motion.h2>
-          
+
           <div className="flex gap-2 md:gap-3">
             {[-1, 1].map((dir) => (
-              <motion.button 
+              <motion.button
                 key={dir}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => changeSlide(dir)} 
-                className="flex items-center justify-center rounded-lg md:rounded-xl border border-gray-200 w-10 h-10 md:w-[55px] md:h-[55px] bg-white hover:border-[#432CF3] hover:text-[#432CF3] transition-colors shadow-sm"
+                onClick={() => changeSlide(dir)}
+                className="flex items-center justify-center rounded-lg md:rounded-[8px] border border-gray-200 w-10 h-10 md:w-[55px] md:h-[55px] bg-white hover:border-[#432CF3] hover:text-[#432CF3] transition-colors shadow-sm"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`w-4 h-4 md:w-5 md:h-5 ${dir === -1 ? 'rotate-180' : ''}`}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -107,19 +107,19 @@ export default function Depoimentos() {
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.3 }
               }}
-              className="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-16 w-full bg-[#F3F7FA] p-6 sm:p-10 lg:p-16 rounded-[30px] md:rounded-[50px] border border-gray-100 shadow-inner"
+              className="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-16 w-full bg-[#F3F7FA] p-6 sm:p-10 lg:p-16 rounded-[8px] md:rounded-[50px] border border-gray-100 shadow-inner"
             >
               {/* Imagem com Hover suave */}
-              <motion.div 
+              <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px] aspect-square rounded-[25px] md:rounded-[35px] overflow-hidden border-4 border-white shadow-xl flex-shrink-0"
+                className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px] aspect-square rounded-[8px] md:rounded-[8px] overflow-hidden border-4 border-white shadow-xl flex-shrink-0"
               >
-                <motion.img 
+                <motion.img
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.6 }}
-                  src={depoimentos[currentIndex].img} 
+                  src={depoimentos[currentIndex].img}
                   alt={depoimentos[currentIndex].nome}
                   className="w-full h-full object-cover"
                 />
@@ -127,7 +127,7 @@ export default function Depoimentos() {
 
               {/* Conteúdo de Texto */}
               <div className="flex flex-col justify-center text-center lg:text-left flex-1">
-                <motion.div 
+                <motion.div
                   variants={contentVariants}
                   initial="hidden"
                   animate="visible"
@@ -141,13 +141,13 @@ export default function Depoimentos() {
                   </span>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: "100%" }}
-                  className="mx-auto lg:mx-0 max-w-[150px] md:max-w-[200px] h-[1.5px] bg-slate-200 my-6 md:my-8" 
+                  className="mx-auto lg:mx-0 max-w-[150px] md:max-w-[200px] h-[1.5px] bg-slate-200 my-6 md:my-8"
                 />
 
-                <motion.p 
+                <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
