@@ -107,7 +107,7 @@ export default function Headertop() {
                     </div>
                 </div>
             </nav>
-  
+
 
 
 
@@ -122,9 +122,9 @@ export default function Headertop() {
             <div className={`hidden md:flex justify-center absolute left-0 w-full z-[100] transition-all duration-500 ease-in-out transform ${active ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
                 <div className="max-w-[1400px] w-full mt-0 p-8 bg-[#F3F7FA] rounded shadow-2xl">
                     <div className="flex flex-col md:flex-row justify-center gap-6 items-stretch w-full">
-                        <div className="bg-white rounded-[8px] text-[16px] px-8 font-normal py-10 text-left space-y-4 shadow-sm min-w-[280px]">
+                        <div className={`bg-white rounded-[8px] text-[16px] px-8 font-normal py-10 text-left space-y-4 shadow-sm ${active === "solucao" ? "w-[320px]" : "min-w-[280px]"}`}>
                             <p className="text-[17px] font-bold">
-                                {active === "sobre" ? "Sobre a Planner" : " BRANDING &  EXPERIÊNCIA DIGITAL"}
+                                {active === "sobre" ? "Sobre a Planner" : <>Branding & <br /> Experiência Digital</>}
                             </p>
                             <hr className="w-full border border-[#DADADA]" />
                             <div className="flex flex-col gap-2">
@@ -137,62 +137,63 @@ export default function Headertop() {
                                     </div>
                                 ) : (
                                     <div className="flex flex-col space-y-3">
-                                        <div>
-                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center">
-                                                <Link href="/branding" className="flex-1 hover:font-bold ">Branding & Identidade</Link>
-                                                <button onClick={() => setAccordionOpen(accordionOpen === "branding" ? null : "branding")} className="p-1 bg-black rounded">
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full hover:font-bold  text-left hover:text-[#432CF3] transition-colors flex justify-between items-center">
+                                                <Link href="/branding" className="flex-1 ">Branding & Identidade</Link>
+                                                <button onMouseEnter={() => setAccordionOpen("branding")} onClick={() => setAccordionOpen(accordionOpen === "branding" ? null : "branding")} className="p-1 bg-black rounded">
                                                     <svg className={`w-4 h-4 text-white transition-transform ${accordionOpen === "branding" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                                                 </button>
                                             </div>
                                             {accordionOpen === "branding" && (
-                                                <div className="pl-4 pt-2 space-y-2">
+                                                <div className="pl-4 pt-2 space-y-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
                                                     <Link href="/branding/naming" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Naming <br /> (Criação de Nomes)</Link>
                                                     <Link href="/branding/design" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Design de Marca <br /> (Logotipo e Identidade Visual)</Link>
-                                                    <Link href="/branding/aplicacoes" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Aplicações de Marca <br /> (Materiais e Pontos de Contato)</Link>
-                                                    <Link href="/branding/brandbook" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Brandbook <br /> (Guia de Estilo e Manual da Marca)</Link>
-                                                    <Link href="/branding/rebranding" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Rebranding <br /> (Estratégia de Reposicionamento)</Link>
+                                                    <Link href="/branding/aplicacoes" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Aplicações de Marca <br /> (Materiais e  Pontos de <br /> Contato)</Link>
+                                                    <Link href="/branding/brandbook" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Brandbook (Guia de <br /> Estilo e Manual da Marca)</Link>
+                                                    <Link href="/branding/rebranding" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Rebranding (Estratégia <br /> de Reposicionamento)</Link>
                                                 </div>
                                             )}
                                         </div>
-                                        <div>
-                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center">
-                                                <Link href="/desenvolvimento" className="flex-1 hover:font-bold">Desenvolvimento Web <br /> de Alta Performance</Link>
-                                                <button onClick={() => setAccordionOpen(accordionOpen === "dev" ? null : "dev")} className="p-1 bg-black rounded">
+
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full text-left hover:text-[#432CF3] hover:font-bold  transition-colors flex justify-between items-center">
+                                                <Link href="/desenvolvimento" className="flex-1 ">Desenvolvimento Web <br /> de Alta Performance</Link>
+                                                <button onMouseEnter={() => setAccordionOpen("dev")} onClick={() => setAccordionOpen(accordionOpen === "dev" ? null : "dev")} className="p-1 bg-black rounded">
                                                     <svg className={`w-4 h-4 text-white transition-transform ${accordionOpen === "dev" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                                                 </button>
                                             </div>
                                             {accordionOpen === "dev" && (
-                                                <div className="pl-4 pt-2 space-y-2">
-                                                    <Link href="/desenvolvimento/websites" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Websites Institucionais e Portais</Link>
+                                                <div className="pl-4 pt-2 space-y-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
+                                                    <Link href="/desenvolvimento/websites" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Websites Institucionais <br /> e br Portais</Link>
                                                     <Link href="/desenvolvimento/landing" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Landing Pages de Alta Conversão</Link>
-                                                    <Link href="/desenvolvimento/hotsites" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Hotsites para Campanhas e Lançamentos</Link>
+                                                    <Link href="/desenvolvimento/hotsites" className="block text-[16px] text-gray-600 hover:font-bold hover:text-[#432CF3] transition-colors">Hotsites para Campanhas <br /> e Lançamentos</Link>
                                                 </div>
                                             )}
                                         </div>
-                                        <div>
-                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center">
-                                                <Link href="/ecommerce" className="flex-1 hover:font-bold">E-commerce & <br /> Ecossistemas de Venda</Link>
-                                                <button onClick={() => setAccordionOpen(accordionOpen === "ecommerce" ? null : "ecommerce")} className="p-1 bg-black rounded">
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full text-left hover:text-[#432CF3] hover:font-bold  transition-colors flex justify-between items-center">
+                                                <Link href="/ecommerce" className="flex-1 ">E-commerce & <br /> Ecossistemas de Venda</Link>
+                                                <button onMouseEnter={() => setAccordionOpen("ecommerce")} onClick={() => setAccordionOpen(accordionOpen === "ecommerce" ? null : "ecommerce")} className="p-1 bg-black rounded">
                                                     <svg className={`w-4 h-4 text-white transition-transform ${accordionOpen === "ecommerce" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                                                 </button>
                                             </div>
                                             {accordionOpen === "ecommerce" && (
-                                                <div className="pl-4 pt-2 space-y-2">
-                                                    <Link href="/ecommerce/lojas" className="block text-[16px] text-gray-600 hover:text-[#432CF3] hover:font-bold transition-colors">Implementação de Lojas Virtuais</Link>
+                                                <div className="pl-4 pt-2 space-y-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
+                                                    <Link href="/ecommerce/lojas" className="block text-[16px] text-gray-600 hover:text-[#432CF3] hover:font-bold transition-colors">Implementação de <br /> Lojas Virtuais</Link>
                                                     <Link href="/ecommerce/ux" className="block text-[16px] text-gray-600 hover:text-[#432CF3] hover:font-bold transition-colors">UX/UI Design focado em Checkout e Conversão</Link>
                                                 </div>
                                             )}
                                         </div>
-                                        <div>
-                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center">
-                                                <Link href="/audiovisual" className="flex-1 hover:font-bold">Produção Audiovisual & <br /> Shooting</Link>
-                                                <button onClick={() => setAccordionOpen(accordionOpen === "audiovisual" ? null : "audiovisual")} className="p-1 bg-black rounded">
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full text-left hover:text-[#432CF3] hover:font-bold  transition-colors flex justify-between items-center">
+                                                <Link href="/audiovisual" className="flex-1 ">Produção Audiovisual & <br /> Shooting</Link>
+                                                <button onMouseEnter={() => setAccordionOpen("audiovisual")} onClick={() => setAccordionOpen(accordionOpen === "audiovisual" ? null : "audiovisual")} className="p-1 bg-black rounded">
                                                     <svg className={`w-4 h-4 text-white transition-transform ${accordionOpen === "audiovisual" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                                                 </button>
                                             </div>
                                             {accordionOpen === "audiovisual" && (
-                                                <div className="pl-4 pt-2 space-y-2">
-                                                    <Link href="/audiovisual/roteiro" className="block text-[16px] hover:font-bold text-gray-600 hover:text-[#432CF3] transition-colors">Roteirização <br /> (Estratégia e Storytelling)</Link>
+                                                <div className="pl-4 pt-2 space-y-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
+                                                    <Link href="/audiovisual/roteiro" className="block text-[16px] hover:font-bold text-gray-600 hover:text-[#432CF3] transition-colors">Roteirização (Estratégia <br /> e Storytelling)</Link>
                                                     <Link href="/audiovisual/foto" className="block text-[16px] hover:font-bold text-gray-600 hover:text-[#432CF3] transition-colors">Fotografia Profissional <br /> (Shooting de Produtos e Corporativo)</Link>
                                                     <Link href="/audiovisual/video" className="block text-[16px] hover:font-bold text-gray-600 hover:text-[#432CF3] transition-colors">Captura de Vídeos <br /> (Publicitários e Institucionais)</Link>
                                                 </div>
@@ -203,69 +204,284 @@ export default function Headertop() {
                             </div>
                         </div>
 
-                        
+
+
+
+
 
                         {active === "solucao" && (
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 flex-1">
-                                <Link href="/branding" className="group flex flex-col justify-between p-6 bg-white hover:bg-gradient-to-br hover:from-[#DFDBFC] hover:to-white rounded-[8px] transition-all duration-500 shadow-sm hover:shadow-md border border-transparent hover:border-[#432CF3]/20">
-                                    <div className="flex items-center justify-center bg-amber-300 gap-4 w-full py-4">
-                                        <p className="text-[19px] font-bold text-gray-900 leading-tight group-hover:text-[#432CF3] transition-colors whitespace-nowrap">
-                                            Growth & Performance
-                                        </p>
+                            <div className="bg-white rounded-[8px] text-[16px] px-8 font-normal py-10 text-left space-y-4 shadow-sm w-[320px]">
+                                <p className="text-[17px] font-bold  tracking-wider text-black">
+                                   Growth & <br /> Performance
+                                </p>
 
-                                        <div className="p-2 w-fit border border-black rounded-[8px] group-hover:bg-[#432CF3] group-hover:border-[#432CF3] group-hover:text-white transition-all shrink-0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                            </svg>
+                                <hr className="w-full border border-[#DADADA]" />
+
+                                <div className="flex flex-col gap-2">
+                                    <div className="flex flex-col space-y-3">
+                                        {/* BRANDING */}
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center group">
+                                                <Link href="/branding" className="flex-1 group-hover:font-bold">Gestão de Tráfego Pago</Link>
+                                                <button
+                                                    onMouseEnter={() => setAccordionOpen("Growth")}
+                                                    onClick={() => setAccordionOpen(accordionOpen === "Growth" ? null : "Growth")}
+                                                    className="p-1 bg-black rounded hover:bg-[#432CF3] transition-colors"
+                                                >
+                                                    <svg className={`w-4 h-4 text-white transition-transform duration-300 ${accordionOpen === "Growth" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            {accordionOpen === "Growth" && (
+                                                <div className="pl-4 pt-3 space-y-3 border-l-2 border-[#F3F7FA] mt-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
+                                                    <Link href="/branding/naming" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Google Ads & YouTube Ads</Link>
+                                                    <Link href="/branding/design" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Meta Ads (Instagram <br /> e Facebook)</Link>
+                                                    <Link href="/branding/brandbook" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Social Ads de Nicho <br /> (TikTok Ads e LinkedIn Ads)</Link>
+                                                    <Link href="/branding/brandbook" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Estratégias Avançadas de <br /> Remarketing Multicanal</Link>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* DESENVOLVIMENTO */}
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center group">
+                                                <Link href="/desenvolvimento" className="flex-1 group-hover:font-bold">SEO Full Stack (Otimização)</Link>
+                                                <button
+                                                    onMouseEnter={() => setAccordionOpen("seo")}
+                                                    onClick={() => setAccordionOpen(accordionOpen === "seo" ? null : "seo")}
+                                                    className="p-1 bg-black rounded hover:bg-[#432CF3] transition-colors"
+                                                >
+                                                    <svg className={`w-4 h-4 text-white transition-transform duration-300 ${accordionOpen === "seo" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            {accordionOpen === "seo" && (
+                                                <div className="pl-4 pt-3 space-y-3 border-l-2 border-[#F3F7FA] mt-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
+                                                    <Link href="/desenvolvimento/websites" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">SEO Local e Google Maps</Link>
+                                                    <Link href="/desenvolvimento/landing" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">SEO para E-commerce</Link>
+                                                    <Link href="/desenvolvimento/landing" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]"> SEO para Voz <br /> (Voice Search) e Mobile</Link>
+                                                    <Link href="/desenvolvimento/landing" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Dados Estruturados <br />  e Otimização  de  Performance  <br /> (Core Web Vitals)</Link>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Estratégia de Inbound Marketing */}
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center group">
+                                                <Link href="/ecommerce" className="flex-1 group-hover:font-bold">Estratégia de Inbound Marketing</Link>
+                                                <button
+                                                    onMouseEnter={() => setAccordionOpen("estrategia")}
+                                                    onClick={() => setAccordionOpen(accordionOpen === "estrategia" ? null : "estrategia")}
+                                                    className="p-1 bg-black rounded hover:bg-[#432CF3] transition-colors"
+                                                >
+                                                    <svg className={`w-4 h-4 text-white transition-transform duration-300 ${accordionOpen === "estrategia" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            {accordionOpen === "estrategia" && (
+                                                <div className="pl-4 pt-3 space-y-3 border-l-2 border-[#F3F7FA] mt-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
+                                                    <Link href="/ecommerce/lojas" className="block text-[15px] hover:font-bold text-gray-600 hover:text-[#432CF3]">Gestão de Funis <br /> de Atração e Nutrição</Link>
+                                                    <Link href="/ecommerce/ux" className="block text-[15px]  hover:font-bold text-gray-600 hover:text-[#432CF3]">Marketing de Conteúdo <br /> Estratégico</Link>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
-
-
-
-
-
-
-
-
-                                    
-                                    <div className="mt-8">
-                                        <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-[#432CF3]">Ver mais</span>
-                                    </div>
-                                </Link>
-
-                                <Link href="/desenvolvimento" className="group flex flex-col justify-between p-6 bg-white hover:bg-gradient-to-br hover:from-[#DFDBFC] hover:to-white rounded-[8px] transition-all duration-500 shadow-sm hover:shadow-md border border-transparent hover:border-[#432CF3]/20">
-                                    <div className="space-y-4">
-                                        <div className="p-2 w-fit border border-black rounded-[8px] group-hover:bg-[#432CF3] group-hover:border-[#432CF3] group-hover:text-white transition-all">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                            </svg>
-                                        </div>
-                                        <p className="text-[19px] font-bold text-gray-900 leading-tight group-hover:text-[#432CF3] transition-colors">
-                                            Desenvolvimento Web
-                                        </p>
-                                    </div>
-                                    <div className="mt-8">
-                                        <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-[#432CF3]">Ver mais</span>
-                                    </div>
-                                </Link>
-
-                                <Link href="/marketing" className="group flex flex-col justify-between p-6 bg-white hover:bg-gradient-to-br hover:from-[#DFDBFC] hover:to-white rounded-[8px] transition-all duration-500 shadow-sm hover:shadow-md border border-transparent hover:border-[#432CF3]/20">
-                                    <div className="space-y-4">
-                                        <div className="p-2 w-fit border border-black rounded-[8px] group-hover:bg-[#432CF3] group-hover:border-[#432CF3] group-hover:text-white transition-all">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                            </svg>
-                                        </div>
-                                        <p className="text-[19px] font-bold text-gray-900 leading-tight group-hover:text-[#432CF3] transition-colors">
-                                            Marketing Digital
-                                        </p>
-                                    </div>
-                                    <div className="mt-8">
-                                        <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-[#432CF3]">Ver mais</span>
-                                    </div>
-                                </Link>
+                                </div>
                             </div>
                         )}
+
+
+
+
+
+
+
+
+
+
+
+
+                        {active === "solucao" && (
+                            <div className="bg-white rounded-[8px] text-[16px] px-8 font-normal py-10 text-left space-y-4 shadow-sm w-[320px]">
+                                <p className="text-[17px] font-bold  tracking-wider text-black">
+                                   IA, Customer Experience &  Gestão de Atendimento
+                                </p>
+
+                                <hr className="w-full border border-[#DADADA]" />
+
+                                <div className="flex flex-col gap-2">
+                                    <div className="flex flex-col space-y-3">
+                                        {/* BRANDING */}
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center group">
+                                                <Link href="/branding" className="flex-1 group-hover:font-bold">Inteligência Artificial & <br /> Agentes Conversacionais</Link>
+                                                <button
+                                                    onMouseEnter={() => setAccordionOpen("ia")}
+                                                    onClick={() => setAccordionOpen(accordionOpen === "ia" ? null : "ia")}
+                                                    className="p-1 bg-black rounded hover:bg-[#432CF3] transition-colors"
+                                                >
+                                                    <svg className={`w-4 h-4 text-white transition-transform duration-300 ${accordionOpen === "ia" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            {accordionOpen === "ia" && (
+                                                <div className="pl-4 pt-3 space-y-3 border-l-2 border-[#F3F7FA] mt-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
+                                                    <Link href="/branding/naming" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Implementação de IA <br /> Generativa para Atendimento (LLMs)</Link>
+                                                    <Link href="/branding/design" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]"> Treino de Base de <br /> Conhecimento Própria (RAG)</Link>
+
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* DESENVOLVIMENTO */}
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center group">
+                                                <Link href="/desenvolvimento" className="flex-1 group-hover:font-bold">Automação de Atendimento (Chatbots)</Link>
+                                                <button
+                                                    onMouseEnter={() => setAccordionOpen("automacao")}
+                                                    onClick={() => setAccordionOpen(accordionOpen === "automacao" ? null : "automacao")}
+                                                    className="p-1 bg-black rounded hover:bg-[#432CF3] transition-colors"
+                                                >
+                                                    <svg className={`w-4 h-4 text-white transition-transform duration-300 ${accordionOpen === "automacao" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            {accordionOpen === "automacao" && (
+                                                <div className="pl-4 pt-3 space-y-3 border-l-2 border-[#F3F7FA] mt-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
+                                                    <Link href="/desenvolvimento/websites" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Automação para WhatsApp <br /> Business API</Link>
+                                                    <Link href="/desenvolvimento/landing" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Soluções para Instagram, <br /> Messenger e Google Business</Link>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* E-COMMERCE */}
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center group">
+                                                <Link href="/ecommerce" className="flex-1 group-hover:font-bold">Automação de Marketing Multicanal</Link>
+                                                <button
+                                                    onMouseEnter={() => setAccordionOpen("aut")}
+                                                    onClick={() => setAccordionOpen(accordionOpen === "aut" ? null : "aut")}
+                                                    className="p-1 bg-black rounded hover:bg-[#432CF3] transition-colors"
+                                                >
+                                                    <svg className={`w-4 h-4 text-white transition-transform duration-300 ${accordionOpen === "aut" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            {accordionOpen === "aut" && (
+                                                <div className="pl-4 pt-3 space-y-3 border-l-2 border-[#F3F7FA] mt-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
+                                                    <Link href="/ecommerce/lojas" className="block text-[15px] hover:font-bold text-gray-600 hover:text-[#432CF3]">Automação de E-mail, <br /> SMS e RCS</Link>
+                                                    <Link href="/ecommerce/ux" className="block text-[15px] hover:font-bold text-gray-600 hover:text-[#432CF3]">Fluxos de Engajamento em Redes Sociais</Link>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+
+
+
+
+
+
+
+                        {active === "solucao" && (
+                            <div className="bg-white rounded-[8px] text-[16px] px-8 font-normal py-10 text-left space-y-4 shadow-sm w-[320px]">
+                                <p className="text-[17px] font-bold  tracking-wider text-black">
+                                    Infra, Dados & <br /> Segurança
+                                </p>
+
+                                <hr className="w-full border border-[#DADADA]" />
+
+                                <div className="flex flex-col gap-2">
+                                    <div className="flex flex-col space-y-3">
+                                        {/* BRANDING */}
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center group">
+                                                <Link href="/branding" className="flex-1 group-hover:font-bold">Cloud Engineering & Hosting</Link>
+                                                <button
+                                                    onMouseEnter={() => setAccordionOpen("infra1")}
+                                                    onClick={() => setAccordionOpen(accordionOpen === "infra1" ? null : "infra1")}
+                                                    className="p-1 bg-black rounded hover:bg-[#432CF3] transition-colors"
+                                                >
+                                                    <svg className={`w-4 h-4 text-white transition-transform duration-300 ${accordionOpen === "infra1" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            {accordionOpen === "infra1" && (
+                                                <div className="pl-4 pt-3 space-y-3 border-l-2 border-[#F3F7FA] mt-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
+                                                    <Link href="/branding/naming" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Hospedagem Cloud <br /> e Cloud Native</Link>
+                                                    <Link href="/branding/design" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Arquitetura de <br /> Microsserviços e Escalabilidade</Link>
+                                                    <Link href="/branding/brandbook" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]"> Gestão de Infraestrutura <br /> como Código (IaC)</Link>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* DESENVOLVIMENTO */}
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center group">
+                                                <Link href="/desenvolvimento" className="flex-1 group-hover:font-bold">Segurança & Compliance (Cybersecurity)</Link>
+                                                <button
+                                                    onMouseEnter={() => setAccordionOpen("infra2")}
+                                                    onClick={() => setAccordionOpen(accordionOpen === "infra2" ? null : "infra2")}
+                                                    className="p-1 bg-black rounded hover:bg-[#432CF3] transition-colors"
+                                                >
+                                                    <svg className={`w-4 h-4 text-white transition-transform duration-300 ${accordionOpen === "infra2" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            {accordionOpen === "infra2" && (
+                                                <div className="pl-4 pt-3 space-y-3 border-l-2 border-[#F3F7FA] mt-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
+                                                    <Link href="/desenvolvimento/websites" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Consultoria de Adequação <br /> à LGPD e Gestão de Cookies</Link>
+                                                    <Link href="/desenvolvimento/landing" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Ethical Hacking <br /> e  Testes de Vulnerabilidade</Link>
+                                                    <Link href="/desenvolvimento/landing" className="block text-[15px] text-gray-600 hover:font-bold hover:text-[#432CF3]">Gestão de DNS e Monitorização <br /> DMARC (Blindagem de Domínio)
+                                                    </Link>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Cultura de Dados (Analytics & BI) */}
+                                        <div onMouseLeave={() => setAccordionOpen(null)}>
+                                            <div className="w-full text-left hover:text-[#432CF3] transition-colors flex justify-between items-center group">
+                                                <Link href="/ecommerce" className="flex-1 group-hover:font-bold">Cultura de Dados <br /> (Analytics & BI)</Link>
+                                                <button
+                                                    onMouseEnter={() => setAccordionOpen("cultura")}
+                                                    onClick={() => setAccordionOpen(accordionOpen === "cultura" ? null : "cultura")}
+                                                    className="p-1 bg-black rounded hover:bg-[#432CF3] transition-colors"
+                                                >
+                                                    <svg className={`w-4 h-4 text-white transition-transform duration-300 ${accordionOpen === "cultura" ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            {accordionOpen === "cultura" && (
+                                                <div className="pl-4 pt-3 space-y-3 border-l-2 border-[#F3F7FA] mt-2 overflow-hidden transition-all duration-300 ease-out animate-[slideDown_0.3s_ease-out]">
+                                                    <Link href="/ecommerce/lojas" className="block text-[15px] hover:font-bold text-gray-600 hover:text-[#432CF3]">Implementação de GA4 <br /> e Google Tag Manager (GTM)</Link>
+                                                    <Link href="/ecommerce/ux" className="block text-[15px] hover:font-bold text-gray-600 hover:text-[#432CF3]">Dashboards Inteligentes <br /> (Looker Studio)</Link>
+                                                    <Link href="/ecommerce/ux" className="block text-[15px] hover:font-bold text-gray-600 hover:text-[#432CF3]">astreamento Avançado (UTM Tracking e Encurtadores <br /> Próprios)</Link>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+
+
+
+
+
+
 
                         {active === "sobre" && (
                             <div className="flex flex-1 w-full bg-gradient-to-r from-[#DFDBFC] to-white rounded-[8px] overflow-hidden">
