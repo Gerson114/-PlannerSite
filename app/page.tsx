@@ -6,8 +6,15 @@ import Marketing from "./components/home/marketing/marketing";
 import Depoimentos from "./components/home/depoimentos/Depoimentos";
 import Cliente from "./components/home/Clientes/Clientes";
 
+import type { Metadata } from "next";
 
 
+export const metadata:Metadata = {
+    title: "Branding",
+     alternates: {
+    canonical: "/Branding",
+  },
+}
 export default function Home() {
   return (
     <>

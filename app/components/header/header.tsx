@@ -77,34 +77,34 @@ export default function Headertop() {
                                 <div onMouseEnter={() => setactive("solucao")} className={`hidden md:block transition-colors duration-300 p-10 ${active === "solucao" ? 'bg-[#F3F7FA]' : 'hover:bg-[#F3F7FA]'}`}>
                                     <Link onClick={() => setactive(active === "solucao" ? null : "solucao")} href="#" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${active === "solucao" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                         Soluções
-                                        <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${active === "solucao" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                                        
                                     </Link>
                                 </div>
 
 
                                 <Link href="/portifolio" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${pathname === "/portifolio" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                     Cases
-                                    <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${pathname === "/portifolio" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                                   
                                 </Link>
 
 
                                 <div onMouseEnter={() => setactive("sobre")} className={`hidden md:block transition-colors duration-300 p-10 ${active === "sobre" ? 'bg-[#F3F7FA]' : 'hover:bg-[#F3F7FA]'}`}>
                                     <Link onClick={() => setactive(active === "sobre" ? null : "sobre")} href="#" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${active === "sobre" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                         Sobre
-                                        <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${active === "sobre" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                                       
                                     </Link>
                                 </div>
 
 
                                 <Link href="/blog" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${pathname === "/blog" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                     Blog
-                                    <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${pathname === "/blog" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                                  
                                 </Link>
 
 
                                 <Link href="/contato" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${pathname === "/contato" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                     Contato
-                                    <span className={`absolute bottom-0 left-0 h-[3px] bg-[#432CF3] rounded-full transition-all duration-500 ${pathname === "/contato" ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                                   
                                 </Link>
                             </div>
                         </div>
@@ -525,13 +525,25 @@ export default function Headertop() {
                 </div>
             </div>
 
+
+
+
             <div className={`fixed right-8 top-1/2 -translate-y-1/2 z-[100] transition-all duration-700 ${showScrollButton ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                <button onClick={scrollToTop} className="flex flex-col items-center gap-4 bg-white text-black py-8 px-3 rounded-[8px] border border-gray-300 shadow-lg hover:border-[#432CF3] hover:text-[#432CF3] transition-all group">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5 group-hover:-translate-y-2 transition-transform">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                 
+
+                  <button onClick={scrollToTop} className="flex flex-col mb-[18px] items-center gap-4 bg-white text-black py-2 px-3 rounded-[8px] border border-black  hover:border-[#432CF3] hover:text-[#432CF3] transition-all group">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-8">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 19V5m0 0l-7 7m7-7l7 7" />
                     </svg>
-                    <span className="font-bold text-[10px] tracking-[0.2em] uppercase whitespace-nowrap" style={{ writingMode: 'vertical-rl' }}>ROLAR PARA CIMA</span>
                 </button>
+
+                <button onClick={scrollToTop} className="flex hover:scale-103  flex-col items-center gap-4 bg-white hover:bg-[#F3F7FA] text-black py-8 px-3 rounded-[8px] border border-black  transition-all group">
+
+                    
+                  
+                    <span className="font-bold  text-[10px]  text-[15px] " style={{ writingMode: 'vertical-rl' }}>Voltar ao Início</span>
+                </button>
+                
             </div>
 
             <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="hidden md:flex fixed right-8 bottom-8 z-[100] bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#20BA5A] transition-all hover:scale-110">

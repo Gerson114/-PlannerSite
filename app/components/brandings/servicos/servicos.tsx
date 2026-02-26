@@ -1,135 +1,202 @@
-import { ArrowRight } from "lucide-react";
+"use client";
+
+import { useState } from "react";
 
 export default function Servicos() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const nextSlide = () => {
+        if (currentIndex < 3) {
+            setCurrentIndex(currentIndex + 1);
+        }
+    };
+
+    const prevSlide = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(currentIndex - 1);
+        }
+    };
+
     return (
         <>
-        <section className="flex justify-center mt-[40px] md:mt-[60px] px-4">
-            <div className="max-w-[1400px] w-full">
-
-                {/* Título Responsivo */}
-                <div>
-                    <h2 className="text-[32px] md:text-[50px] font-bold leading-[1.1]">
-                        Conheça alguns dos <br />
-                        <span className="text-[#4D35F4]">nossos serviços</span>
+            <section className="flex justify-center mt-[40px] md:mt-[60px] px-4">
+                <div className="max-w-[1400px] w-full">
+                    <h2 className="text-[50px] font-extrabold leading-[1.1]">
+                        Conheça alguns dos <br /> nossos serviços
                     </h2>
-                </div>
 
-                {/* Grid Responsivo */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 mt-[30px] md:mt-[40px] items-center">
+                    <div className="mt-[50px] relative">
+                        {/* Botão Voltar */}
+                        <button
+                            onClick={prevSlide}
+                            disabled={currentIndex === 0}
+                            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black text-white p-4 rounded-[8px] hover:bg-gray-800 transition-all duration-300 disabled:opacity-50"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                            </svg>
+                        </button>
 
-                    {/* Primeira Coluna: Imagem/Card */}
-                    <div className="bg-[#F3F7FA] h-[300px] md:h-[400px] rounded-[30px] flex items-center justify-center border border-[#DADADA]">
-                        <span className="text-gray-400">Conteúdo Visual</span>
-                    </div>
+                        {/* Botão Avançar */}
+                        <button
+                            onClick={nextSlide}
+                            disabled={currentIndex >= 3}
+                            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black text-white p-4 rounded-[8px] hover:bg-gray-800 transition-all duration-300 disabled:opacity-50"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </button>
 
-                    {/* Segunda Coluna: Conteúdo */}
-                    <div className="flex flex-col justify-center">
-                        <div className="flex flex-wrap gap-2 text-[14px] md:text-[18px] font-bold mb-4">
-                            <div className="border border-black py-[4px] px-4 rounded-full">
-                                <p>BRANDING</p>
+                        <div className="overflow-hidden">
+                            <div
+                                className="flex transition-transform duration-500 ease-in-out"
+                                style={{ transform: `translateX(-${currentIndex * 50}%)` }}
+                            >
+                                {/* Card 1 */}
+                                <div className="w-1/2 flex-shrink-0 pr-4">
+                                    <div className="p-[50px] w-full border border-[#DADADA] rounded-[8px]">
+                                        <h3 className="text-[40px] leading-[1.1] font-extrabold">Branding & Design</h3>
+                                        <p className="text-[22px] mt-[15px]">Foco: Posicionamento e Identidade.</p>
+                                        <hr className="max-w-[200px] my-[30px] w-full border border-[#DADADA]" />
+                                        <p className="text-[22px]"><strong>O que entregamos:</strong> Rebranding estratégico, Naming (criação de nomes), Criação de Logotipos, Identidade Visual completa e Brand Books.</p>
+                                        <p className="text-[22px] mt-[40px]"><strong>O diferencial:</strong> Criamos marcas que não apenas "parecem bonitas", mas que comunicam autoridade e facilitam a decisão de compra do seu cliente.</p>
+
+                                        <div className="flex gap-4 mt-[50px]">
+                                            <button className="bg-white text-black border-2 border-black p-3 rounded-[8px] hover:bg-black hover:text-white transition-all duration-300 group">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 group-hover:translate-x-1 transition-transform">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                                </svg>
+                                            </button>
+                                            <button className="py-[14px] px-[24px] text-white font-semibold rounded-[8px] bg-[#432CF3] hover:bg-[#0C1523] transition-all duration-300">
+                                                Saiba mais
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Card 2 */}
+                                <div className="w-1/2 flex-shrink-0 pl-4 pr-4">
+                                    <div className="p-[50px] w-full border border-[#DADADA] rounded-[8px]">
+                                        <h3 className="text-[40px] leading-[1.1] font-extrabold">Desenvolvimento Web</h3>
+                                        <p className="text-[22px] mt-[15px]">Foco: Performance e Conversão.</p>
+                                        <hr className="max-w-[200px] my-[30px] w-full border border-[#DADADA]" />
+                                        <p className="text-[22px]"><strong>O que entregamos:</strong> Sites institucionais, Landing Pages de alta conversão, E-commerce e Plataformas customizadas.</p>
+                                        <p className="text-[22px] mt-[40px]"><strong>O diferencial:</strong> Desenvolvemos experiências digitais que carregam rápido, convertem mais e são otimizadas para SEO.</p>
+
+                                        <div className="flex gap-4 mt-[50px]">
+                                            <button className="bg-white text-black border-2 border-black p-3 rounded-[8px] hover:bg-black hover:text-white transition-all duration-300 group">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 group-hover:translate-x-1 transition-transform">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                                </svg>
+                                            </button>
+                                            <button className="py-[14px] px-[24px] text-white font-semibold rounded-[8px] bg-[#432CF3] hover:bg-[#0C1523] transition-all duration-300">
+                                                Saiba mais
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Card 3 */}
+                                <div className="w-1/2 flex-shrink-0 pl-4 pr-4">
+                                    <div className="p-[50px] w-full border border-[#DADADA] rounded-[8px]">
+                                        <h3 className="text-[40px] leading-[1.1] font-extrabold">Desenvolvimento Web</h3>
+                                        <p className="text-[22px] mt-[15px]">Foco: Performance e Conversão.</p>
+                                        <hr className="max-w-[200px] my-[30px] w-full border border-[#DADADA]" />
+                                        <p className="text-[22px]"><strong>O que entregamos:</strong> Sites institucionais, Landing Pages de alta conversão, E-commerce e Plataformas customizadas.</p>
+                                        <p className="text-[22px] mt-[40px]"><strong>O diferencial:</strong> Desenvolvemos experiências digitais que carregam rápido, convertem mais e são otimizadas para SEO.</p>
+
+                                        <div className="flex gap-4 mt-[50px]">
+                                            <button className="bg-white text-black border-2 border-black p-3 rounded-[8px] hover:bg-black hover:text-white transition-all duration-300 group">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 group-hover:translate-x-1 transition-transform">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                                </svg>
+                                            </button>
+                                            <button className="py-[14px] px-[24px] text-white font-semibold rounded-[8px] bg-[#432CF3] hover:bg-[#0C1523] transition-all duration-300">
+                                                Saiba mais
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+                                <div className="w-1/2 flex-shrink-0 pl-4 pr-4">
+                                    <div className="p-[50px] w-full border border-[#DADADA] rounded-[8px]">
+                                        <h3 className="text-[40px] leading-[1.1] font-extrabold">Desenvolvimento Web</h3>
+                                        <p className="text-[22px] mt-[15px]">Foco: Performance e Conversão.</p>
+                                        <hr className="max-w-[200px] my-[30px] w-full border border-[#DADADA]" />
+                                        <p className="text-[22px]"><strong>O que entregamos:</strong> Sites institucionais, Landing Pages de alta conversão, E-commerce e Plataformas customizadas.</p>
+                                        <p className="text-[22px] mt-[40px]"><strong>O diferencial:</strong> Desenvolvemos experiências digitais que carregam rápido, convertem mais e são otimizadas para SEO.</p>
+
+                                        <div className="flex gap-4 mt-[50px]">
+                                            <button className="bg-white text-black border-2 border-black p-3 rounded-[8px] hover:bg-black hover:text-white transition-all duration-300 group">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 group-hover:translate-x-1 transition-transform">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                                </svg>
+                                            </button>
+                                            <button className="py-[14px] px-[24px] text-white font-semibold rounded-[8px] bg-[#432CF3] hover:bg-[#0C1523] transition-all duration-300">
+                                                Saiba mais
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+                                <div className="w-1/2 flex-shrink-0 pl-4 pr-4">
+                                    <div className="p-[50px] w-full border border-[#DADADA] rounded-[8px]">
+                                        <h3 className="text-[40px] leading-[1.1] font-extrabold">Desenvolvimento Web</h3>
+                                        <p className="text-[22px] mt-[15px]">Foco: Performance e Conversão.</p>
+                                        <hr className="max-w-[200px] my-[30px] w-full border border-[#DADADA]" />
+                                        <p className="text-[22px]"><strong>O que entregamos:</strong> Sites institucionais, Landing Pages de alta conversão, E-commerce e Plataformas customizadas.</p>
+                                        <p className="text-[22px] mt-[40px]"><strong>O diferencial:</strong> Desenvolvemos experiências digitais que carregam rápido, convertem mais e são otimizadas para SEO.</p>
+
+                                        <div className="flex gap-4 mt-[50px]">
+                                            <button className="bg-white text-black border-2 border-black p-3 rounded-[8px] hover:bg-black hover:text-white transition-all duration-300 group">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 group-hover:translate-x-1 transition-transform">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                                </svg>
+                                            </button>
+                                            <button className="py-[14px] px-[24px] text-white font-semibold rounded-[8px] bg-[#432CF3] hover:bg-[#0C1523] transition-all duration-300">
+                                                Saiba mais
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             </div>
-                            <div className="border border-black py-[4px] px-4 rounded-full">
-                                <p>SERVISHOPPING</p>
-                            </div>
-                        </div>
-
-                        <h2 className="text-[30px] md:text-[40px] font-bold leading-[1.1]">
-                            Marketing <br /> que impulsiona!
-                        </h2>
-
-                        <p className="text-[18px] md:text-[22px] mt-[20px] text-gray-700">
-                            Criamos estratégias inteligentes para conectar marcas ao seu público, gerar engajamento e impulsionar resultados reais.
-                        </p>
-
-                        {/* Botões */}
-                        <div className="flex flex-wrap items-center mt-[30px] gap-4">
-
-                            {/* Botão da Seta: Fundo Branco, Borda Preta */}
-                            <button className="bg-white text-black border-2 border-black p-3 rounded-[15px] hover:bg-black hover:text-white transition-all duration-300 group">
-                                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                            </button>
-
-                            {/* Botão Saiba Mais */}
-                            <button className="py-[14px] px-[24px] text-white font-semibold rounded-[15px] bg-[#432CF3] hover:bg-[#321ec4] transition-all duration-300">
-                                Saiba mais sobre este projeto
-                            </button>
-
                         </div>
                     </div>
                 </div>
+            </section>
 
-
-
-                <div className="grid mt-[100px]   grid-cols-2">
-                    {/* Card da Esquerda */}
-                    <div className="bg-[#F3F7FA] max-w-[400px] rounded-[15px] w-full h-[500px]">
-                        <div className="flex justify-center mt-[25px] gap-8">
-                            <div className="border-1 py-[8px] px-[15px] rounded-[10px]">BRANDING</div>
-                            <div className="border-1 py-[8px] px-[15px] rounded-[10px]">SERVI SHOPPING</div>
-                            
-                        </div>
-                    </div>
-
-                    {/* Coluna da Direita */}
-                    <div className="ml-[-200px] ">
-                        {/* Card da Direita */}
-                        <div className="bg-[#F3F7FA] h-[350px] rounded-[15px]">
-                            <div className="flex justify-center mt-[0px] gap-8">
-                                <div className="border-1 py-[8px] px-[15px] rounded-[10px]">BRANDING</div>
-                                <div className="border-1 py-[8px] px-[15px] rounded-[10px]">SERVI SHOPPING</div>
-
-
-                               
-                            </div>
-
-                            
-                        </div>
-
-                        {/* Texto abaixo do card */}
-                        <div className="mt-6 flex gap-4 px-2">
-                            <h3 className="text-[22px] leading-[1.1] font-bold text-gray-800">Clique ao lado para <br />
-                             conhecer outros cases <br /> de nossos clientes.</h3>
-
-                               <div className="flex flex-wrap items-center mt-[30px] gap-4">
-
-                            {/* Botão da Seta: Fundo Branco, Borda Preta */}
-                            <button className="bg-white text-black border-2 border-black p-3 rounded-[15px] hover:bg-black hover:text-white transition-all duration-300 group">
-                                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                            </button>
-
-                            {/* Botão Saiba Mais */}
-                            <button className="py-[14px] px-[24px] text-white font-semibold rounded-[15px] bg-[#0C1523] hover:bg-[#0C1523] transition-all duration-300">
-                                Saiba mais sobre este projeto
-                            </button>
-
-                        </div>
-                             
-                             
-                           
-                        </div>
-                    </div>
-                </div>
-
-               
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </div>
-            
-        </section>
-        <hr className="w-full mt-[80px] mb-[80px] border-[#DADADA]  " />
-        </>  
-
-        
+            <hr className="w-full mt-[80px] mb-[80px] border-[#DADADA]" />
+        </>
     );
 }
