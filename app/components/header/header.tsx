@@ -65,7 +65,7 @@ export default function Headertop() {
 
     return (
         <div ref={headerRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="hidden md:block relative z-[999]">
-            <nav className="flex justify-center py-0 bg-white w-full z-50 relative shadow-sm">
+            <nav className="flex justify-center py-0 bg-white w-full z-50 relative">
                 <div className="max-w-[1800px] w-full px-4 sm:px-6">
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <div className="flex justify-between items-center w-full md:w-auto">
@@ -123,7 +123,7 @@ export default function Headertop() {
                                 </div>
 
 
-                                <Link href="/blog" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${pathname === "/blog" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
+                                <Link href="/blog" className={`relative hidden cursor-pointer group py-1 transition-colors duration-300 ${pathname === "/blog" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                     Blog
                                   
                                 </Link>
@@ -138,7 +138,7 @@ export default function Headertop() {
 
                         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-20 text-[19px] font-semibold text-black">
                             <button className="bg-black text-white py-[8px] px-[23px] rounded-[8px] flex items-center gap-2 group hover:bg-[#1a1a1a] transition-all">
-                                <span className="text-[17px] font-medium">Fale Conosco</span>
+                                <Link href={"/contato"} className="text-[17px] font-medium">Fale Conosco</Link>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 group-hover:translate-x-1 transition-transform">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                                 </svg>

@@ -33,7 +33,7 @@ export default function Banner() {
                             alt="Banner Planner" 
                             width={500} 
                             height={500}
-                            className="w-full h-auto object-contain"
+                            className="w-full h-auto object-contain  pointer-events-none select-none"
                             priority
                         />
                     </div>

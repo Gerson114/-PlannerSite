@@ -2,71 +2,8 @@
 
 import { motion } from "framer-motion";
 import Faq from "../brandings/faq/faq";
-import { useState } from "react";
-
 
 export default function Contato() {
-    const [formData, setFormData] = useState({
-        nome: '',
-        empresa: '',
-        email: '',
-        whatsapp: '',
-        mensagem: '',
-        privacidade: false,
-        newsletter: false
-    });
-    const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState('');
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        
-        if (!formData.privacidade) {
-            setMessage('Por favor, aceite a Política de Privacidade');
-            return;
-        }
-
-        setLoading(true);
-        setMessage('');
-
-        try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            });
-
-            const data = await response.json();
-
-            if (data.success) {
-                setMessage('Mensagem enviada com sucesso!');
-                setFormData({
-                    nome: '',
-                    empresa: '',
-                    email: '',
-                    whatsapp: '',
-                    mensagem: '',
-                    privacidade: false,
-                    newsletter: false
-                });
-            } else {
-                setMessage('Erro ao enviar mensagem. Tente novamente.');
-            }
-        } catch (error) {
-            setMessage('Erro ao enviar mensagem. Tente novamente.');
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value, type } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
-        }));
-    };
-
     const fadeInUp = {
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
@@ -155,105 +92,77 @@ export default function Contato() {
                             className="w-full"
                         >
                             <div className="bg-[#432CF3] p-[30px] md:p-[60px] rounded-[8px] shadow-xl">
-                                <form onSubmit={handleSubmit} className="flex flex-col gap-[15px] md:gap-[20px]">
+                                <form 
+                                    action='https://bigin.zoho.com/crm/WebToContactForm' 
+                                    name='BiginWebToRecordForm5537921000006530078' 
+                                    method='POST' 
+                                    acceptCharset='UTF-8' 
+                                    encType='multipart/form-data'
+                                    className="flex flex-col gap-[15px] md:gap-[20px]"
+                                >
+                                    <input type='text' style={{display:'none'}} name='xnQsjsdp' value='084dfde9d10e9fdbeb056b8d63cec232f31e478956363ac8bc390ec7aa38a688'/>
+                                    <input type='hidden' name='zc_gad' id='zc_gad' value=''/>
+                                    <input type='text' style={{display:'none'}} name='xmIwtLD' value='7c0dfe0b8c33d414786677b073f4ad1fa7951c0108ec19c5b9db8a3788c45d9c1781eed407e6f18928d59462a9962d55'/>
+                                    <input type='text' style={{display:'none'}} name='actionType' value='UG90ZW50aWFscw=='/>
+                                    <input type='text' style={{display:'none'}} name='returnURL' value='null' />
+                                    <select name='Pipeline' style={{display:'none'}}>
+                                        <option value='Pré Venda' selected>Pré Venda</option>
+                                    </select>
+                                    <select name='Stage' style={{display:'none'}}>
+                                        <option value='Prospecção' selected>Prospecção</option>
+                                    </select>
+                                    <input type="hidden" name='Potential Name' value='Lead do Website' />
+
                                     <div className="flex flex-col text-[17px] md:text-[19px] text-white">
                                         <label className="mb-[6px] md:mb-[8px] font-medium">Nome Completo</label>
-                                        <input 
-                                            className="bg-white py-[10px] md:py-[12px] px-[15px] rounded-[8px] text-black outline-none w-full" 
-                                            type="text"
-                                            name="nome"
-                                            value={formData.nome}
-                                            onChange={handleChange}
-                                            required
-                                        />
+                                        <input className="bg-white py-[10px] md:py-[12px] px-[15px] rounded-[8px] text-black outline-none w-full" 
+                                               type="text" name="Contacts.First Name" required />
                                     </div>
 
                                     <div className="flex flex-col text-[17px] md:text-[19px] text-white">
                                         <label className="mb-[6px] md:mb-[8px] font-medium">Nome da Empresa</label>
-                                        <input 
-                                            className="bg-white py-[10px] md:py-[12px] px-[15px] rounded-[8px] text-black outline-none w-full" 
-                                            type="text"
-                                            name="empresa"
-                                            value={formData.empresa}
-                                            onChange={handleChange}
-                                            required
-                                        />
+                                        <input className="bg-white py-[10px] md:py-[12px] px-[15px] rounded-[8px] text-black outline-none w-full" 
+                                               type="text" name="Contacts.Last Name" required />
                                     </div>
 
                                     <div className="flex flex-col text-[17px] md:text-[19px] text-white">
                                         <label className="mb-[6px] md:mb-[8px] font-medium">E-mail Corporativo</label>
-                                        <input 
-                                            className="bg-white py-[10px] md:py-[12px] px-[15px] rounded-[8px] text-black outline-none w-full" 
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            required
-                                        />
+                                        <input className="bg-white py-[10px] md:py-[12px] px-[15px] rounded-[8px] text-black outline-none w-full" 
+                                               type="email" name="Contacts.Email" required />
                                     </div>
 
                                     <div className="flex flex-col text-[17px] md:text-[19px] text-white">
                                         <label className="mb-[6px] md:mb-[8px] font-medium">Whatsapp</label>
-                                        <input 
-                                            className="bg-white py-[10px] md:py-[12px] px-[15px] rounded-[8px] text-black outline-none w-full" 
-                                            type="text"
-                                            name="whatsapp"
-                                            value={formData.whatsapp}
-                                            onChange={handleChange}
-                                            required
-                                        />
+                                        <input className="bg-white py-[10px] md:py-[12px] px-[15px] rounded-[8px] text-black outline-none w-full" 
+                                               type="text" name="Contacts.Mobile" required />
                                     </div>
                                     
                                     <div className="flex flex-col text-[17px] md:text-[19px] text-white">
                                         <label className="mb-[6px] md:mb-[8px] font-medium">Em que podemos ajudar?</label>
-                                        <textarea 
-                                            className="bg-white h-[120px] md:h-[150px] rounded-[8px] text-black p-[15px] outline-none resize-none w-full" 
-                                            name="mensagem"
-                                            value={formData.mensagem}
-                                            onChange={handleChange}
-                                            required
-                                        ></textarea>
+                                        <textarea className="bg-white h-[120px] md:h-[150px] rounded-[8px] text-black p-[15px] outline-none resize-none w-full" 
+                                                  name="Contacts.Description" required></textarea>
                                     </div>
 
                                     <div className="flex flex-col gap-[12px] md:gap-[16px] mt-[10px]">
                                         <label className="flex items-start gap-3 cursor-pointer group">
-                                            <input 
-                                                type="checkbox" 
-                                                name="privacidade"
-                                                checked={formData.privacidade}
-                                                onChange={handleChange}
-                                                className="min-w-[18px] h-[18px] md:min-w-[20px] md:h-[20px] mt-[4px] rounded border-none accent-black cursor-pointer shrink-0" 
-                                            />
+                                            <input type="checkbox" required 
+                                                   className="min-w-[18px] h-[18px] md:min-w-[20px] md:h-[20px] mt-[4px] rounded border-none accent-black cursor-pointer shrink-0" />
                                             <span className="text-white text-[14px] md:text-[15px] leading-tight">
                                                 Ao informar meus dados, eu concordo com a <strong>Política de Privacidade</strong>.
                                             </span>
                                         </label>
                                         <label className="flex items-start gap-3 cursor-pointer group">
-                                            <input 
-                                                type="checkbox" 
-                                                name="newsletter"
-                                                checked={formData.newsletter}
-                                                onChange={handleChange}
-                                                className="min-w-[18px] h-[18px] md:min-w-[20px] md:h-[20px] mt-[4px] rounded border-none accent-black cursor-pointer shrink-0" 
-                                            />
+                                            <input type="checkbox" 
+                                                   className="min-w-[18px] h-[18px] md:min-w-[20px] md:h-[20px] mt-[4px] rounded border-none accent-black cursor-pointer shrink-0" />
                                             <span className="text-white text-[14px] md:text-[15px] leading-tight">
                                                 Gostaria de receber nossos e-mails personalizados com estratégias e materiais.
                                             </span>
                                         </label>
                                     </div>
 
-                                    {message && (
-                                        <div className={`text-center p-3 rounded-[8px] ${message.includes('sucesso') ? 'bg-green-500' : 'bg-red-500'} text-white`}>
-                                            {message}
-                                        </div>
-                                    )}
-
-                                    <button 
-                                        type="submit"
-                                        disabled={loading}
-                                        className="mt-[10px] md:mt-[20px] bg-[#2EFF7C] text-black py-[12px] md:py-[15px] rounded-[8px] font-bold text-[16px] md:text-[18px] hover:brightness-90 transition-all w-full shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                                    >
-                                        {loading ? 'Enviando...' : 'Enviar Mensagem'}
+                                    <button type="submit"
+                                        className="mt-[10px] md:mt-[20px] bg-[#2EFF7C] text-black py-[12px] md:py-[15px] rounded-[8px] font-bold text-[16px] md:text-[18px] hover:brightness-90 transition-all w-full shadow-lg disabled:opacity-50 disabled:cursor-not-allowed">
+                                        Enviar Mensagem
                                     </button>
                                 </form>
                             </div>
