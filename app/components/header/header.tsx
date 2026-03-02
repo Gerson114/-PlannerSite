@@ -15,6 +15,7 @@ export default function Headertop() {
     const pathname = usePathname();
 
     const headerRef = useRef<HTMLDivElement>(null);
+    const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
         setactive(null);
@@ -44,13 +45,27 @@ export default function Headertop() {
         };
     }, [active]);
 
+    const handleMouseEnter = () => {
+        if (closeTimeoutRef.current) {
+            clearTimeout(closeTimeoutRef.current);
+            closeTimeoutRef.current = null;
+        }
+    };
+
+    const handleMouseLeave = () => {
+        closeTimeoutRef.current = setTimeout(() => {
+            setactive(null);
+            setAccordionOpen(null);
+        }, 150);
+    };
+
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     return (
-        <div ref={headerRef} className="hidden md:block relative z-[999]">
-            <nav className="flex justify-center py-0  bg-white w-full z-50 relative">
+        <div ref={headerRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="hidden md:block relative z-[999]">
+            <nav className="flex justify-center py-0 bg-white w-full z-50 relative shadow-sm">
                 <div className="max-w-[1800px] w-full px-4 sm:px-6">
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <div className="flex justify-between items-center w-full md:w-auto">
@@ -74,7 +89,13 @@ export default function Headertop() {
                         <div className={`${isOpen ? "max-h-[500px] opacity-100 mt-6" : "max-h-0 opacity-0 md:opacity-100 md:max-h-full"} overflow-hidden md:overflow-visible transition-all duration-500 flex flex-col md:flex-row items-center md:gap-20 w-full md:w-auto`}>
                             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-20 text-[19px] font-semibold text-black">
 
-                                <div onMouseEnter={() => setactive("solucao")} className={`hidden md:block transition-colors duration-300 p-10 ${active === "solucao" ? 'bg-[#F3F7FA]' : 'hover:bg-[#F3F7FA]'}`}>
+                                <div onMouseEnter={() => {
+                                    if (closeTimeoutRef.current) {
+                                        clearTimeout(closeTimeoutRef.current);
+                                        closeTimeoutRef.current = null;
+                                    }
+                                    setactive("solucao");
+                                }} onMouseLeave={handleMouseLeave} className={`hidden md:block transition-colors duration-300 p-10 ${active === "solucao" ? 'bg-[#F3F7FA]' : 'hover:bg-[#F3F7FA]'}`}>
                                     <Link onClick={() => setactive(active === "solucao" ? null : "solucao")} href="#" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${active === "solucao" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                         Soluções
                                         
@@ -88,7 +109,13 @@ export default function Headertop() {
                                 </Link>
 
 
-                                <div onMouseEnter={() => setactive("sobre")} className={`hidden md:block transition-colors duration-300 p-10 ${active === "sobre" ? 'bg-[#F3F7FA]' : 'hover:bg-[#F3F7FA]'}`}>
+                                <div onMouseEnter={() => {
+                                    if (closeTimeoutRef.current) {
+                                        clearTimeout(closeTimeoutRef.current);
+                                        closeTimeoutRef.current = null;
+                                    }
+                                    setactive("sobre");
+                                }} onMouseLeave={handleMouseLeave} className={`hidden md:block transition-colors duration-300 p-10 ${active === "sobre" ? 'bg-[#F3F7FA]' : 'hover:bg-[#F3F7FA]'}`}>
                                     <Link onClick={() => setactive(active === "sobre" ? null : "sobre")} href="#" className={`relative cursor-pointer group py-1 transition-colors duration-300 ${active === "sobre" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                         Sobre
                                        
@@ -132,7 +159,7 @@ export default function Headertop() {
 
 
 
-            <div className={`hidden md:flex justify-center absolute left-0 w-full z-[100] transition-all duration-500 ease-in-out transform ${active ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
+            <div onMouseEnter={handleMouseEnter} className={`hidden md:flex justify-center absolute left-0 w-full z-[100] transition-all duration-500 ease-in-out transform ${active ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
                 <div onMouseLeave={() => setactive(null)} className="max-w-[1400px] w-full mt-0 p-8 bg-[#F3F7FA] rounded ">
                     <div className="flex flex-col md:flex-row justify-center gap-6 items-stretch w-full">
                         <div className={`bg-white rounded-[8px] text-[16px] px-8 font-normal py-10 text-left space-y-4 shadow-sm ${active === "solucao" ? "w-[320px]" : "min-w-[280px]"}`}>
