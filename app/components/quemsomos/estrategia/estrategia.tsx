@@ -44,7 +44,7 @@ export default function Estrategia() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-[35px] md:text-[55px] leading-[1.1] font-bold text-[#1A1A1A]"
+            className="text-[32px] md:text-[40px] leading-[1.1] font-bold text-[#1A1A1A]"
           >
             Onde a Estratégia <br className="hidden md:block" /> encontra a Tecnologia.
           </motion.h2>
@@ -53,7 +53,7 @@ export default function Estrategia() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-[18px] md:text-[22px] mt-[20px] leading-[1.4] text-gray-600 max-w-[700px]"
+            className="text-[18px] md:text-[19px] mt-[20px] leading-[1.4] text-gray-600 max-w-[700px]"
           >
             Nossa abordagem é metódica, transparente e, acima de tudo, orientada ao sucesso do cliente.
           </motion.p>
@@ -105,7 +105,7 @@ export default function Estrategia() {
               }
             ].map((item, index) => (
               <motion.div key={index} variants={fadeInUp} className="group">
-                <h3 className="text-black font-bold text-[20px] uppercase tracking-wider mb-3 flex items-center gap-2">
+                <h3 className="text-black font-bold text-[22px] uppercase tracking-wider mb-3 flex items-center gap-2">
                   <motion.span 
                     initial={{ width: 0 }}
                     whileInView={{ width: 32 }}
@@ -115,7 +115,7 @@ export default function Estrategia() {
                   ></motion.span>
                   {item.title}
                 </h3>
-                <p className="text-[20px] md:text-[22px] leading-[1.5] text-gray-800">
+                <p className="text-[19px] md:text-[19px] leading-[1.5] text-gray-800">
                   {item.text}
                 </p>
               </motion.div>

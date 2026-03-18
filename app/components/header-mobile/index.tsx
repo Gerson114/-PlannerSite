@@ -25,13 +25,13 @@ export default function HeaderMobile() {
   }, []);
 
   return (
-    <>
+    <header>
       {/* HEADER NO TOPO - NÃO FIXO */}
-      <header className="lg:hidden w-full bg-white border-b border-gray-100 py-5">
+      <nav className="lg:hidden w-full bg-white border-b border-gray-100 py-5">
         <div className="flex justify-center">
           <Image src={Logo} alt="Logo" width={115} height={38} priority />
         </div>
-      </header>
+      </nav>
 
       {/* Overlay de fundo */}
       <div 
@@ -137,6 +137,6 @@ export default function HeaderMobile() {
           </div>
         </div>
       </div>
-    </>
+    </header>
   );
 }

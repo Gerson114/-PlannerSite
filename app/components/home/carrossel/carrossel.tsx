@@ -1,185 +1,132 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight, ChevronLeft } from "lucide-react";
+
+const cases = [
+  { id: 1, title: "Case 01", description: "Estratégia Digital" },
+  { id: 2, title: "Case 02", description: "Branding & Design" },
+  { id: 3, title: "Case 03", description: "Desenvolvimento Web" },
+  { id: 4, title: "Case 04", description: "User Experience" },
+];
 
 export default function Carrossel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [cardsPorVez, setCardsPorVez] = useState(2);
 
-  const cases = [
-    {
-      categoria: "DESIGN",
-      cliente: "NOVA IDEIA",
-      titulo: "Design que \n comunica",
-      descricao: "Desenvolvemos identidades visuais fortes e consistentes que traduzem a essência da marca.",
-      link: "/cases/nova-ideia"
-    },
-    {
-      categoria: "WEB",
-      cliente: "TECH FLOW",
-      titulo: "Experiências \n digitais",
-      descricao: "Criamos sites e plataformas rápidas, intuitivas e responsivas, focadas em conversão.",
-      link: "/cases/tech-flow"
-    }
-  ];
+  // Hook para detectar o tamanho da tela e ajustar a quantidade de cards
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setCardsPorVez(1); // Mobile e Tablet
+      } else {
+        setCardsPorVez(2); // Desktop
+      }
+    };
 
-  // Variantes para o conteúdo de texto (efeito de revelação)
-  const textVariants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.2 } },
-    exit: { opacity: 0, x: -20, transition: { duration: 0.3 } }
+    handleResize(); // Chama ao montar
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const visibleCards = cases.slice(index, index + cardsPorVez);
+
+  const nextStep = () => {
+    if (index + cardsPorVez < cases.length) setIndex(index + 1);
   };
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? "20%" : "-20%",
-      opacity: 0,
-      scale: 0.95,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-      scale: 1,
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? "20%" : "-20%",
-      opacity: 0,
-      scale: 0.95,
-    }),
-  };
-
-  const changeSlide = (newDirection: number) => {
-    setDirection(newDirection);
-    if (newDirection === 1) {
-      setCurrentIndex((prev) => (prev === cases.length - 1 ? 0 : prev + 1));
-    } else {
-      setCurrentIndex((prev) => (prev === 0 ? cases.length - 1 : prev - 1));
-    }
+  const prevStep = () => {
+    if (index > 0) setIndex(index - 1);
   };
 
   return (
-    <div className="flex justify-center overflow-hidden w-full">
-      <div className="max-w-[1400px] w-full px-6 md:px-0 mb-10 md:mb-20">
+    <section className="flex justify-center items-center min-h-[600px] bg-white p-6 md:p-10 font-sans overflow-hidden">
+      <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-[1.2fr_2.8fr] gap-8 lg:gap-12 items-center">
         
-        {/* Cabeçalho */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mt-10 md:mt-[80px] gap-6">
-          <motion.h2 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-[35px] md:text-[50px] font-bold tracking-tight leading-tight"
-          >
-            Cases de Sucesso
-          </motion.h2>
+        {/* Lado Esquerdo: Texto */}
+        <div className="lg:pl-10 text-center lg:text-left">
+          <h2 className="text-[28px] md:text-[48px] leading-[1.0] font-extrabold text-black mb-2 ">
+            Nossos Cases
+          </h2>
+          <p className="text-[18px] md:text-[22px] text-gray-600 max-w-[400px] mx-auto lg:mx-0">
+            Unimos estratégia de marca e tecnologia para transformar o potencial de nossos clientes em resultados reais.
+          </p>
           
-          <div className="flex gap-3 mb-2">
-            {/* Botões com feedback tátil */}
-            {[-1, 1].map((dir) => (
-              <motion.button 
-                key={dir}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => changeSlide(dir)} 
-                className="flex items-center justify-center rounded-[8px] border border-gray-300 w-[50px] h-[50px] md:w-[55px] md:h-[55px] hover:border-[#432CF3] hover:text-[#432CF3] transition-colors"
+          {/* Botões Mobile: Visíveis apenas abaixo de LG */}
+          <div className="flex gap-4 justify-center mt-8 lg:hidden">
+             <button 
+                onClick={prevStep}
+                disabled={index === 0}
+                className={`w-12 h-12 flex items-center justify-center rounded-[8px] transition-all ${index > 0 ? 'bg-black text-white' : 'bg-gray-200 text-gray-400'}`}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={`w-6 h-6 ${dir === -1 ? 'rotate-180' : ''}`}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </motion.button>
-            ))}
+                <ChevronLeft size={24} />
+              </button>
+              <button 
+                onClick={nextStep}
+                disabled={index + cardsPorVez >= cases.length}
+                className={`w-12 h-12 flex items-center justify-center rounded-[8px] transition-all ${index + cardsPorVez < cases.length ? 'bg-black text-white' : 'bg-gray-200 text-gray-400'}`}
+              >
+                <ChevronRight size={24} />
+              </button>
           </div>
         </div>
 
-        {/* Área de Transição */}
-        <div className="relative mt-10 md:mt-[40px] min-h-[650px] md:min-h-[550px]">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.4 }
-              }}
-              className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-16 items-stretch w-full"
-            >
-              {/* Lado Esquerdo: Imagem */}
-              <motion.div 
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.5 }}
-                className="w-full h-[300px] md:h-full min-h-[300px] md:min-h-[500px] bg-gray-100 rounded-[8px] flex items-center justify-center text-gray-400 border border-gray-200 overflow-hidden shadow-inner"
+        {/* Lado Direito: Container do Carrossel */}
+        <div className="relative flex items-center">
+          
+          {/* Botão Voltar (Desktop) */}
+          <div className="absolute -left-6 z-20 hidden lg:block">
+            {index > 0 && (
+              <button 
+                onClick={prevStep}
+                className="w-14 h-14 bg-black text-white flex items-center justify-center rounded-[8px] hover:bg-zinc-800 transition-all shadow-xl"
               >
-                <motion.span 
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 0.2 }}
-                  className="text-2xl md:text-4xl font-bold italic uppercase tracking-tighter text-center px-4"
+                <ChevronLeft size={32} strokeWidth={2} />
+              </button>
+            )}
+          </div>
+
+          {/* Área dos Cards */}
+          <div className="flex gap-4 md:gap-6 w-full overflow-hidden py-4 h-[400px] md:h-[480px]">
+            <AnimatePresence mode="popLayout" initial={false}>
+              {visibleCards.map((item) => (
+                <motion.div
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.4, ease: "circOut" }}
+                  className="flex-1 min-w-full md:min-w-[280px] h-full bg-white rounded-[24px] border border-gray-100 p-8 md:p-10 flex flex-col justify-end relative overflow-hidden shadow-sm"
                 >
-                  {cases[currentIndex].cliente}
-                </motion.span>
-              </motion.div>
-
-              {/* Lado Direito: Texto com Stagger */}
-              <motion.div 
-                variants={textVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="flex flex-col justify-center py-2"
-              >
-                <div className="flex items-center gap-4">
-                  <motion.div 
-                    initial={{ scale: 0 }} 
-                    animate={{ scale: 1 }}
-                    className="bg-[#432CF3]/10 text-[#432CF3] font-bold text-[10px] md:text-[12px] tracking-widest py-1 px-4 rounded-full uppercase"
-                  >
-                    {cases[currentIndex].categoria}
-                  </motion.div>
-                  <div className="text-gray-400 font-medium tracking-widest text-[10px] md:text-[12px]">
-                    {cases[currentIndex].cliente}
-                  </div>
-                </div>
-
-                <div className="mt-4 md:mt-6">
-                  <h2 className="text-[32px] sm:text-[42px] md:text-[45px] lg:text-[55px] font-bold leading-[1.1] md:leading-[1] tracking-tighter text-slate-900 whitespace-pre-line">
-                    {cases[currentIndex].titulo}
-                  </h2>
-                  
-                  <p className="text-[16px] md:text-[18px] lg:text-[22px] text-gray-600 mt-4 md:mt-6 leading-relaxed">
-                    {cases[currentIndex].descricao}
+                  <span className="text-[11px] md:text-[12px] font-bold tracking-[0.2em] mb-3 uppercase text-gray-400">
+                    Discovery / 0{item.id}
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-black mb-2 leading-none uppercase tracking-tight text-black">
+                    {item.title}
+                  </h3>
+                  <p className="text-base md:text-lg leading-snug text-gray-700">
+                    {item.description}
                   </p>
-                  
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-8 md:mt-10">
-                    <div className="flex gap-4 w-full sm:w-auto">
-                        <motion.a 
-                          whileHover={{ rotate: 15, scale: 1.1 }}
-                          href={cases[currentIndex].link} 
-                          className="flex items-center justify-center rounded-[8px] border border-gray-300 w-[55px] h-[55px] hover:bg-gray-50 transition-colors shadow-sm"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                        </motion.a>
-                        
-                        <motion.a 
-                          whileHover={{ x: 5 }}
-                          href={cases[currentIndex].link} 
-                          className="flex-1 sm:flex-none text-center bg-[#432CF3] hover:bg-[#321fd1] text-white py-[16px] rounded-full px-8 font-semibold transition-all shadow-lg shadow-blue-500/20 text-sm md:text-base"
-                        >
-                            Saiba mais sobre este projeto
-                        </motion.a>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          </AnimatePresence>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+
+          {/* Botão Próximo (Desktop) */}
+          <div className="absolute -right-6 z-20 hidden lg:block">
+            {index + cardsPorVez < cases.length && (
+              <button 
+                onClick={nextStep}
+                className="w-14 h-14 bg-black text-white flex items-center justify-center rounded-[8px] hover:bg-zinc-800 transition-all shadow-xl"
+              >
+                <ChevronRight size={32} strokeWidth={2} />
+              </button>
+            )}
+          </div>
+
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -38,7 +38,7 @@ export default function Existimos() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-[50px] font-extrabold leading-[1.1] mb-8"
+          className="text-[32px] md:text-[40px] font-extrabold leading-[1.1] mb-3"
         >
           Por que existimos?
         </motion.h2>
@@ -54,11 +54,11 @@ export default function Existimos() {
             className="flex flex-col gap-8"
           >
             <motion.div variants={itemVariants}>
-              <p className="text-[22px] leading-relaxed text-gray-800">
+              <p className="text-[19px] leading-relaxed text-gray-800">
                 Todo grande negócio em Pernambuco nasce de uma visão, mas sabemos que o caminho para o crescimento digital pode ser repleto de ruídos e jargões complexos. A Planner nasceu da percepção de que as Pequenas e Médias Empresas precisavam de algo mais do que apenas "marketing": elas precisavam de inteligência prática.
               </p>
 
-              <p className="text-[22px] mt-6 leading-relaxed text-gray-800">
+              <p className="text-[19px] mt-6 leading-relaxed text-gray-800">
                 Nossa história é pautada pela crença de que negócios são feitos por pessoas, e que transformações verdadeiras só acontecem quando a tecnologia (Martech) está a serviço de uma marca forte (Branding). Não entregamos apenas dados; entregamos clareza para que você possa tomar as melhores decisões para o seu futuro.
               </p>
             </motion.div>

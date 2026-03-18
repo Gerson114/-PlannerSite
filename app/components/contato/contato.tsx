@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Faq from "../brandings/faq/faq";
+import Faq from "../../unicos/faq/faq";
 
 export default function Contato() {
     const fadeInUp = {
@@ -11,7 +11,7 @@ export default function Contato() {
 
     return (
         <>
-            <div className="flex justify-center mt-[60px] md:mt-[100px] mb-[60px] md:mb-[100px]">
+            <section className="flex justify-center mt-[60px] md:mt-[100px] mb-[60px] md:mb-[100px]">
                 <div className="max-w-[1400px] w-full px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-[40px] lg:gap-[80px]">
 
@@ -22,11 +22,11 @@ export default function Contato() {
                             transition={{ duration: 0.6 }}
                             className="flex flex-col justify-start text-center md:text-left items-center md:items-start"
                         >
-                            <h2 className="text-[32px] md:text-[80px] font-extrabold leading-[1.0] text-black">
+                            <h2 className="text-[32px] md:text-[72px] font-extrabold leading-[1.0] text-black">
                                 Vamos planejar o seu próximo ciclo de crescimento?
                             </h2>
 
-                            <p className="text-[18px] md:text-[22px] mt-[20px] leading-[1.2] md:leading-[1.1] text-gray-700">
+                            <p className="text-[18px] md:text-[19px] mt-[20px] leading-[1.2] md:leading-[1.1] text-gray-700">
                                 Seja para tirar uma dúvida técnica ou solicitar um diagnóstico estratégico, nossa equipe de especialistas está pronta para ouvir você.
                             </p>
 
@@ -40,8 +40,8 @@ export default function Contato() {
                                         </svg>
                                     </div>
                                     <div className="text-center md:text-left">
-                                        <p className="text-[#432CF2] text-[20px] md:text-[22px] font-bold leading-none">Nosso Email</p>
-                                        <p className="text-gray-800 text-[18px] md:text-[20px] font-normal mt-1 break-all">contato@agenciaplanner.com.br</p>
+                                        <p className="text-[#432CF2] text-[20px] md:text-[20px] font-bold leading-none">Nosso Email</p>
+                                        <p className="text-gray-800 text-[18px] md:text-[19px] font-normal mt-1 break-all">contato@agenciaplanner.com.br</p>
                                     </div>
                                 </motion.div>
 
@@ -52,15 +52,15 @@ export default function Contato() {
                                         </svg>
                                     </div>
                                     <div className="text-center md:text-left">
-                                        <p className="text-[#432CF2] text-[20px] md:text-[22px] font-bold leading-none">Nosso Whatsapp</p>
-                                        <p className="text-gray-800 text-[18px] md:text-[20px] font-normal mt-1">(11) 99999-9999</p>
+                                        <p className="text-[#432CF2] text-[20px] md:text-[20px] font-bold leading-none">Nosso Whatsapp</p>
+                                        <p className="text-gray-800 text-[18px] md:text-[19px] font-normal mt-1">(11) 99999-9999</p>
                                     </div>
                                 </motion.div>
                             </div>
 
                             <hr className="w-full border-[#DADADA] my-[30px] md:my-[40px]" />
 
-                            <p className="font-bold text-[32px] md:text-[50px] text-black">Segue a gente</p>
+                            <p className="font-bold text-[32px] md:text-[32px] text-black">Segue a gente</p>
                             <div className="flex gap-4 mt-6">
                                 {[
                                     { id: 'insta', path: <><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></>, viewBox: "0 0 24 24", type: "stroke" },
@@ -170,7 +170,7 @@ export default function Contato() {
 
                     </div>
                 </div>
-            </div> 
+            </section> 
 
             <hr className="w-full border-[#DADADA]" />
 

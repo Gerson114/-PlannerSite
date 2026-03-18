@@ -5,9 +5,7 @@ import Link from "next/link"
 
 export default function Footer() {
     return (
-        <>
-        <hr className="w-full border-[#DADADA]  " />
-        <footer className="flex justify-center bg-white py-12">
+        <footer className="flex justify-center bg-white py-12 border-t border-[#DADADA]">
             
             <div className="max-w-[1400px] w-full px-6">
                
@@ -23,7 +21,7 @@ export default function Footer() {
 
                     {/* Empresa */}
                     <div>
-                        <p className="text-[20px] font-bold mb-6">Empresa</p>
+                        <h3 className="text-[20px] font-bold mb-6">Empresa</h3>
                         <div className="flex flex-col gap-4 text-[15px] opacity-80">
                             <Link href="/Quem-Somos" className="hover:opacity-100 transition-opacity">Quem somos</Link>
                             <Link href="/branding" className="hover:opacity-100 transition-opacity">Serviços</Link>
@@ -35,7 +33,7 @@ export default function Footer() {
 
                     {/* Serviços */}
                     <div>
-                        <p className="text-[20px] font-bold mb-6">Serviços</p>
+                        <h3 className="text-[20px] font-bold mb-6">Serviços</h3>
                         <div className="flex flex-col gap-4 text-[15px] opacity-80">
                             <Link href="/branding" className="hover:opacity-100 transition-opacity">Branding & Design</Link>
                             <Link href="/branding" className="hover:opacity-100 transition-opacity">Criação & Desenvolvimento</Link>
@@ -46,7 +44,7 @@ export default function Footer() {
 
                     {/* Conecte-se */}
                     <div>
-                        <p className="text-[20px] font-bold mb-6">Conecte-se</p>
+                        <h3 className="text-[20px] font-bold mb-6">Conecte-se</h3>
                         <div className="flex gap-4">
                             <Link href="#" className="flex items-center justify-center w-11 h-11 rounded-xl border border-white/30 hover:bg-white hover:text-[#432CF3] transition-all duration-300">
                                 <Instagram size={30} strokeWidth={1.5} />
@@ -71,7 +69,5 @@ export default function Footer() {
                 </div>
             </div>
         </footer>
-        
-         </>
     )
 }

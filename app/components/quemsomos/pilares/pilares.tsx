@@ -26,15 +26,14 @@ export default function Pilares() {
   };
 
   return (
-    <>
-      <div className="grid justify-center mb-[100px]">
+    <section className="grid justify-center mb-[100px]">
         <div className="max-w-[1400px] w-full">
           
           <motion.h2 
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[50px] mb-[25px] font-bold"
+            className="text-[32px] md:text-[40px] mb-[25px] font-bold"
           >
             Nossos Pilares
           </motion.h2>
@@ -48,18 +47,18 @@ export default function Pilares() {
             viewport={{ once: true }}
           >
             <motion.div variants={itemVariants} className="border-1 boder-[#DADADA] p-[30px] rounded-[8px]">
-              <h3 className="text-[40px] font-bold">Missão</h3>
-              <p className="text-[22px]">Simplificar o marketing digital e potencializar o crescimento de PMEs em Pernambuco através de estratégia e tecnologia.</p>
+              <h3 className="text-[28px] md:text-[30px] font-bold">Missão</h3>
+              <p className="text-[19px]">Simplificar o marketing digital e potencializar o crescimento de PMEs em Pernambuco através de estratégia e tecnologia.</p>
             </motion.div>
 
             <motion.div variants={itemVariants} className="border-1 boder-[#DADADA] p-[30px] rounded-[8px]">
-              <h3 className="text-[40px] font-bold">Visão</h3>
-              <p className="text-[22px]">Ser a agência referência no estado, reconhecida por transformar potencial em crescimento real e comprovado.</p>
+              <h3 className="text-[28px] md:text-[30px] font-bold">Visão</h3>
+              <p className="text-[19px]">Ser a agência referência no estado, reconhecida por transformar potencial em crescimento real e comprovado.</p>
             </motion.div>
 
             <motion.div variants={itemVariants} className="border-1 boder-[#DADADA] p-[30px] rounded-[8px]">
-              <h3 className="text-[40px] font-bold">Valores</h3>
-              <p className="text-[22px]">Foco no Resultado, Parceria Transparente, Inteligência Prática, Adaptação Contínua e Compromisso Local.</p>
+              <h3 className="text-[28px] md:text-[30px] font-bold">Valores</h3>
+              <p className="text-[19px]">Foco no Resultado, Parceria Transparente, Inteligência Prática, Adaptação Contínua e Compromisso Local.</p>
             </motion.div>
           </motion.div>
 
@@ -80,13 +79,12 @@ export default function Pilares() {
             transition={{ duration: 0.8 }}
             className=""
           >
-            <h3 className="text-[50px] font-bold text-center">Pronto para o próximo nível?</h3>
+            <h3 className="text-[32px] md:text-[50px] font-bold text-center">Pronto para o próximo nível?</h3>
             <p className="text-[22px] text-center">
               O crescimento da sua empresa não precisa ser um enigma. Vamos construir juntos uma trajetória de sucesso baseada em dados, clareza e parceria.
             </p>
           </motion.div> 
         </div>
-      </div>
-    </>
+    </section>
   );
 }

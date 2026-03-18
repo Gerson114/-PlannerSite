@@ -26,8 +26,7 @@ export default function Banner() {
   };
 
   return (
-    <>
-      <div className="flex justify-center">
+    <section className="flex justify-center">
         {/* Envolvemos o conteúdo no motion.div para orquestrar as crianças */}
         <motion.div 
           variants={container}
@@ -38,7 +37,7 @@ export default function Banner() {
           {/* Título com animação suave */}
           <motion.h2 
             variants={item}
-            className="mt-[100px] text-center font-bold text-[80px] leading-[0.9]"
+            className="mt-[100px] text-center font-bold text-[32px] md:text-[70px] leading-[0.9]"
           >
             Tranformamos o seu <br />
             potencial em <br />
@@ -48,14 +47,13 @@ export default function Banner() {
           {/* Parágrafo com animação suave */}
           <motion.p 
             variants={item}
-            className="text-center mt-[30px] text-[22px]"
+            className="text-center mt-[30px] text-[19px]"
           >
             Simplificamos a complexidade para potencializar o seu crescimento. Na Planner, 
             unimos estratégia de marca e tecnologia para transformar o seu potencial em 
             resultados reais e mensuráveis.
           </motion.p>
         </motion.div>
-      </div>
-    </>
+    </section>
   );
 }

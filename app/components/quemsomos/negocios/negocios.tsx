@@ -27,7 +27,7 @@ export default function Negocios() {
 
   return (
     <>
-      <div className="flex justify-center mt-[100px]">
+      <section className="flex justify-center mt-[100px]">
         <motion.div 
           className="max-w-[1400px] w-full"
           variants={containerVariants}
@@ -38,16 +38,16 @@ export default function Negocios() {
           {/* Título */}
           <motion.h2 
             variants={itemVariants}
-            className="text-[50px] leading-[1.1] font-bold"
+            className="text-[32px] md:text-[40px] leading-[1.1] font-bold"
           >
-            Negócios são feitos <br /> por pessoas. Pessoas <br />
+            Negócios são feitos por pessoas. <br /> Pessoas 
             transformam negócios.
           </motion.h2>
 
           {/* Parágrafo 1 */}
           <motion.p 
             variants={itemVariants}
-            className="text-[22px] mt-[50px]"
+            className="text-[19px] mt-[30px]"
           >
             A Planner nasceu de uma lacuna clara no mercado de Pernambuco: a
             necessidade de PMEs terem acesso a uma estratégia que fosse, ao mesmo
@@ -59,7 +59,7 @@ export default function Negocios() {
           {/* Parágrafo 2 */}
           <motion.p 
             variants={itemVariants}
-            className="text-[22px] mt-[50px]"
+            className="text-[19px] mt-[30px]"
           >
             Decidimos ser a voz da clareza. Como o Sábio que guia, assumimos o
             compromisso de educar e capacitar nossos parceiros. Não entregamos
@@ -69,7 +69,7 @@ export default function Negocios() {
             sucesso, um sorriso.
           </motion.p>
         </motion.div>
-      </div>
+      </section>
 
       {/* Linha Divisória com animação de largura */}
       <div className="flex justify-center">

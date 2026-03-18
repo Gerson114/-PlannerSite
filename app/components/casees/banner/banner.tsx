@@ -6,7 +6,7 @@ export default function Banner() {
 
                     {/* Coluna de Texto */}
                     <div className="flex flex-col gap-8">
-                        <h2 className="text-[54px] lg:text-[80px] font-bold leading-[1.1] tracking-tight text-gray-900">
+                        <h2 className="text-[32px] md:text-[50px] font-bold leading-[1.1] tracking-tight text-gray-900">
                             Transformações <br />
                             que geram <br />
                             <span className="font-normal text-[#432CF3]">resultados</span>
