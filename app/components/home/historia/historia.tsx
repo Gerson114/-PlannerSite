@@ -1,5 +1,3 @@
-"use client";
-import { motion, Variants } from "framer-motion";
 
 export default function Historia() {
   return (

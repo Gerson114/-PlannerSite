@@ -11,10 +11,16 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://Agenciaplaner.com"),
+  metadataBase: new URL("https://agenciaplanner.com"),
   title: {
-    default: "Agenciaplanner",
-    template: "%s | Agenciaplanner",
+    default: "Agência Planner",
+    template: "%s | Agência Planner",
+  },
+  description: "Simplificamos o marketing digital para transformar o potencial da sua marca em crescimento real, mensurável e escalável.",
+  openGraph: {
+    siteName: "Agência Planner",
+    locale: "pt_BR",
+    type: "website",
   },
 };
 
@@ -25,10 +31,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body
         className={`${raleway.variable} font-sans antialiased`}
         style={{ fontFamily: 'var(--font-raleway)' }}
+        suppressHydrationWarning
       >
          <Headertop/>
           <HeaderMobile/>

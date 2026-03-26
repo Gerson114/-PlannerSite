@@ -100,18 +100,18 @@ export default function Contato() {
                                     encType='multipart/form-data'
                                     className="flex flex-col gap-[15px] md:gap-[20px]"
                                 >
-                                    <input type='text' style={{display:'none'}} name='xnQsjsdp' value='084dfde9d10e9fdbeb056b8d63cec232f31e478956363ac8bc390ec7aa38a688'/>
-                                    <input type='hidden' name='zc_gad' id='zc_gad' value=''/>
-                                    <input type='text' style={{display:'none'}} name='xmIwtLD' value='7c0dfe0b8c33d414786677b073f4ad1fa7951c0108ec19c5b9db8a3788c45d9c1781eed407e6f18928d59462a9962d55'/>
-                                    <input type='text' style={{display:'none'}} name='actionType' value='UG90ZW50aWFscw=='/>
-                                    <input type='text' style={{display:'none'}} name='returnURL' value='null' />
-                                    <select name='Pipeline' style={{display:'none'}}>
-                                        <option value='Pré Venda' selected>Pré Venda</option>
+                                    <input type='text' style={{display:'none'}} name='xnQsjsdp' defaultValue='084dfde9d10e9fdbeb056b8d63cec232f31e478956363ac8bc390ec7aa38a688'/>
+                                    <input type='hidden' name='zc_gad' id='zc_gad' defaultValue=''/>
+                                    <input type='text' style={{display:'none'}} name='xmIwtLD' defaultValue='7c0dfe0b8c33d414786677b073f4ad1fa7951c0108ec19c5b9db8a3788c45d9c1781eed407e6f18928d59462a9962d55'/>
+                                    <input type='text' style={{display:'none'}} name='actionType' defaultValue='UG90ZW50aWFscw=='/>
+                                    <input type='text' style={{display:'none'}} name='returnURL' defaultValue='null' />
+                                    <select name='Pipeline' style={{display:'none'}} defaultValue='Pré Venda'>
+                                        <option value='Pré Venda'>Pré Venda</option>
                                     </select>
-                                    <select name='Stage' style={{display:'none'}}>
-                                        <option value='Prospecção' selected>Prospecção</option>
+                                    <select name='Stage' style={{display:'none'}} defaultValue='Prospecção'>
+                                        <option value='Prospecção'>Prospecção</option>
                                     </select>
-                                    <input type="hidden" name='Potential Name' value='Lead do Website' />
+                                    <input type="hidden" name='Potential Name' defaultValue='Lead do Website' />
 
                                     <div className="flex flex-col text-[17px] md:text-[19px] text-white">
                                         <label className="mb-[6px] md:mb-[8px] font-medium">Nome Completo</label>

@@ -30,6 +30,7 @@ export type WPPost = {
     nome_da_criacao_do_post?: string;
     minutos_de_leitura?: string;
     introducion?: string;
+    conclusao?: string;
 
     // FAQ
     pergunta1?: string;

@@ -13,8 +13,8 @@ export default function Footer() {
 
                     {/* Logo */}
                     <div className="flex flex-col items-start">
-                        <Image src={Logo} alt="Logo" width={180} height={130} className="brightness-0 " />
-                        <p className="mt-6 text-sm opacity-70 leading-relaxed">
+                        <Image src={Logo} alt="Logo Agência Planner" width={180} height={130} className="brightness-0" />
+                        <p className="mt-6 text-sm text-gray-500 leading-relaxed">
                             Transformando ideias em resultados digitais de alto impacto.
                         </p>
                     </div>
@@ -22,23 +22,23 @@ export default function Footer() {
                     {/* Empresa */}
                     <div>
                         <h3 className="text-[20px] font-bold mb-6">Empresa</h3>
-                        <div className="flex flex-col gap-4 text-[15px] opacity-80">
-                            <Link href="/Quem-Somos" className="hover:opacity-100 transition-opacity">Quem somos</Link>
-                            <Link href="/branding" className="hover:opacity-100 transition-opacity">Serviços</Link>
-                            <Link href="/cases" className="hover:opacity-100 transition-opacity">Portifólio</Link>
-                            <Link href="#" className="hover:opacity-100 transition-opacity">Trabalhe Conosco</Link>
-                            <Link href="/contato" className="hover:opacity-100 transition-opacity">Contato</Link>
+                        <div className="flex flex-col gap-4 text-[15px] text-gray-600">
+                            <Link href="/pages/Quem-Somos" className="hover:text-black transition-colors">Quem somos</Link>
+                            <Link href="/pages/brandings" className="hover:text-black transition-colors">Serviços</Link>
+                            <Link href="/pages/cases" className="hover:text-black transition-colors">Portfólio</Link>
+                            <Link href="#" className="hover:text-black transition-colors">Trabalhe Conosco</Link>
+                            <Link href="/pages/contato" className="hover:text-black transition-colors">Contato</Link>
                         </div>
                     </div>
 
                     {/* Serviços */}
                     <div>
                         <h3 className="text-[20px] font-bold mb-6">Serviços</h3>
-                        <div className="flex flex-col gap-4 text-[15px] opacity-80">
-                            <Link href="/branding" className="hover:opacity-100 transition-opacity">Branding & Design</Link>
-                            <Link href="/branding" className="hover:opacity-100 transition-opacity">Criação & Desenvolvimento</Link>
-                            <Link href="/branding" className="hover:opacity-100 transition-opacity">Tráfego Pago</Link>
-                            <Link href="/branding" className="hover:opacity-100 transition-opacity">Servidor & Hospedagem</Link>
+                        <div className="flex flex-col gap-4 text-[15px] text-gray-600">
+                            <Link href="/pages/brandings" className="hover:text-black transition-colors">Branding &amp; Design</Link>
+                            <Link href="/pages/desenvolvimento" className="hover:text-black transition-colors">Criação &amp; Desenvolvimento</Link>
+                            <Link href="/pages/branding" className="hover:text-black transition-colors">Tráfego Pago</Link>
+                            <Link href="/pages/desenvolvimento" className="hover:text-black transition-colors">Servidor &amp; Hospedagem</Link>
                         </div>
                     </div>
 
@@ -46,26 +46,25 @@ export default function Footer() {
                     <div>
                         <h3 className="text-[20px] font-bold mb-6">Conecte-se</h3>
                         <div className="flex gap-4">
-                            <Link href="#" className="flex items-center justify-center w-11 h-11 rounded-xl border border-white/30 hover:bg-white hover:text-[#432CF3] transition-all duration-300">
-                                <Instagram size={30} strokeWidth={1.5} />
+                            <Link href="#" aria-label="Instagram da Agência Planner" className="flex items-center justify-center w-11 h-11 rounded-xl border border-gray-200 hover:bg-[#432CF3] hover:text-white hover:border-[#432CF3] transition-all duration-300">
+                                <Instagram size={22} strokeWidth={1.5} />
                             </Link>
-                            <Link href="#" className="flex items-center justify-center w-11 h-11 rounded-xl border border-white/30 hover:bg-white hover:text-[#432CF3] transition-all duration-300">
-                                <Facebook size={30} strokeWidth={1.5} />
+                            <Link href="#" aria-label="Facebook da Agência Planner" className="flex items-center justify-center w-11 h-11 rounded-xl border border-gray-200 hover:bg-[#432CF3] hover:text-white hover:border-[#432CF3] transition-all duration-300">
+                                <Facebook size={22} strokeWidth={1.5} />
                             </Link>
-                            <Link href="#" className="flex items-center justify-center w-11 h-11 rounded-xl border border-white/30 hover:bg-white hover:text-[#432CF3] transition-all duration-300">
-                                <Linkedin size={30} strokeWidth={1.5} />
+                            <Link href="#" aria-label="LinkedIn da Agência Planner" className="flex items-center justify-center w-11 h-11 rounded-xl border border-gray-200 hover:bg-[#432CF3] hover:text-white hover:border-[#432CF3] transition-all duration-300">
+                                <Linkedin size={22} strokeWidth={1.5} />
                             </Link>
                         </div>
-                        <p className="mt-8 text-sm opacity-60">
+                        <p className="mt-8 text-sm text-gray-500">
                             Siga-nos para acompanhar <br /> nossas novidades.
                         </p>
                     </div>
 
                 </div>
 
-                {/* Linha de Copyright opcional para fechar com chave de ouro */}
-                <div id="footer-copyright" className="border-t border-white/10 mt-12 pt-8 text-center text-sm text-white/40">
-                    © 2024 Planner Marketing. Todos os direitos reservados.
+                <div id="footer-copyright" className="border-t border-gray-200 mt-8 pt-8 text-center text-sm text-gray-400">
+                    © {new Date().getFullYear()} Planner Marketing. Todos os direitos reservados.
                 </div>
             </div>
         </footer>

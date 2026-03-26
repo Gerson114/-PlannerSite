@@ -1,6 +1,6 @@
 
 
-import Banner from "./components/home/banner/banner.";
+import Banner from "./components/home/banner/banner";
 import Carrossel from "./components/home/carrossel/carrossel";
 import Marketing from "./components/home/historia/historia";
 import Depoimentos from "./components/home/depoimentos/Depoimentos";
@@ -16,8 +16,8 @@ import Form from "./unicos/formulario-pages/form";
 
 export const metadata:Metadata = {
     title: "Home",
-     alternates: {
-    canonical: "/Home",
+    alternates: {
+    canonical: "/",
   },
 }
 export default function Home() {

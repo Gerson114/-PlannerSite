@@ -2,6 +2,7 @@ import { WPPost } from "../typagem/typagem";
 import Image from "next/image";
 import PostData from "./plugins/DataTempo/Dt";
 import Equipe from "./plugins/equipe/equipe";
+import { Conclusao } from "./plugins/conclusao/conclusao";
 
 type PageProps = {
     params: Promise<{
@@ -56,7 +57,7 @@ export default async function Page({ params }: PageProps) {
         imageUrl = await getFeaturedImage(post._links["wp:featuredmedia"][0].href);
     }
 
-   
+
 
     //conteudo 
 
@@ -82,10 +83,11 @@ export default async function Page({ params }: PageProps) {
 
                     <h1 className="text-[48px] pb-[13px] font-extrabold leading-[1.1]">{post.title.rendered}</h1>
 
-                    <PostData post={post}/>
-                    <Equipe post={post}/>
+                    <PostData post={post} />
+                    <Equipe post={post} />
+                    <Conclusao post={post} />
 
-                
+
 
                 </div>
             </div>
