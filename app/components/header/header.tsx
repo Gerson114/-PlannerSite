@@ -123,7 +123,7 @@ export default function Headertop() {
                                 </div>
 
 
-                                <Link href="/pages/blog" className={`relative hidden cursor-pointer group py-1 transition-colors duration-300 ${pathname === "/blog" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
+                                <Link href="/blog" className={`relative  cursor-pointer group py-1 transition-colors duration-300 ${pathname === "/blog" ? 'text-[#432CF3]' : 'hover:text-[#432CF3]'}`}>
                                     Blog
                                   
                                 </Link>
