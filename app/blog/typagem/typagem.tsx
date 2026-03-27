@@ -41,6 +41,16 @@ export type WPPost = {
 
     perguntafaq3?: string;
     resposta3?: string;
+
+    p3?: string;
+    r3?: string;
+    _p2?: string;
+    r2?: string;
+    p1r1?: string;
+    p1r2?: string;
+
+    p4?: string;
+    r4?: string;
   };
 
   class_list: string[];
