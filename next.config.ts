@@ -27,6 +27,12 @@ const nextConfig: NextConfig = {
   },
 
   async headers() {
+    // Desativa CSP estrito em modo de desenvolvimento (local)
+    // para não bloquear estilos, scripts e Hot Module Reload no IP local (celular)
+    if (process.env.NODE_ENV === "development") {
+      return [];
+    }
+
     return [
       {
         source: '/(.*)',
