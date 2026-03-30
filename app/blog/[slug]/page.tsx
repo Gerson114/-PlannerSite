@@ -32,7 +32,7 @@ async function getFeaturedImage(href: string): Promise<string | null> {
 
 async function getPost(slug: string): Promise<WPPost | null> {
     const res = await fetch(
-        `https://head.agenciaplanner.dev/wp-json/wp/v2/postes?slug=${slug}`,
+        `${process.env.NEXT_PUBLIC_WP_API}?slug=${slug}`,
         { next: { revalidate: 3600 } }
     );
     if (!res.ok) return null;

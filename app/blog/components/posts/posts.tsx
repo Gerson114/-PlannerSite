@@ -7,7 +7,7 @@ import { unstable_cache } from "next/cache";
 const getPosts = unstable_cache(
     async (): Promise<WPPost[]> => {
         const res = await fetch(
-            "https://head.agenciaplanner.dev/wp-json/wp/v2/postes?per_page=12",
+            `${process.env.NEXT_PUBLIC_WP_API}?per_page=12`,
             { cache: "no-store" }
         );
         if (!res.ok) return [];

@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { unstable_cache } from 'next/cache'
 
 const BASE_URL = 'https://agenciaplanner.com'
-const WP_API = 'https://head.agenciaplanner.dev/wp-json/wp/v2/postes'
+const WP_API = process.env.NEXT_PUBLIC_WP_API || 'https://head.agenciaplanner.dev/wp-json/wp/v2/postes'
 
 interface WPPostBasic {
   slug: string
