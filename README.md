@@ -2,7 +2,7 @@
 
 > Site institucional da Agência Planner, desenvolvido com **Next.js 16**, **React 19**, **TypeScript** e **Tailwind CSS v4**.
 
----
+---   vai ter mais 
 
 ## 📋 Índice
 
