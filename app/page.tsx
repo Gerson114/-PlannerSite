@@ -14,11 +14,18 @@ import Integra from "./components/home/integrar/integrar";
 import Form from "./unicos/formulario-pages/form";
 
 
-export const metadata:Metadata = {
-    title: "Home",
+export const metadata: Metadata = {
+    title: "Agência de Marketing Digital | Agência Planner",
+    description: "Simplificamos o marketing digital para transformar o potencial da sua marca em crescimento real, mensurável e escalável. Conheça a Agência Planner.",
     alternates: {
-    canonical: "/",
-  },
+        canonical: "https://agenciaplanner.com",
+    },
+    openGraph: {
+        title: "Agência de Marketing Digital | Agência Planner",
+        description: "Simplificamos o marketing digital para transformar o potencial da sua marca em crescimento real, mensurável e escalável.",
+        url: "https://agenciaplanner.com",
+        type: "website",
+    },
 }
 export default function Home() {
   return (

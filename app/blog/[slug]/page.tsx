@@ -6,6 +6,7 @@ import { Conclusao } from "./plugins/conclusao/conclusao";
 import Conteudo from "./plugins/conteudo/conteudo";
 import type { Metadata } from "next";
 import FAQ from "./plugins/faq/faq";
+import DOMPurify from "isomorphic-dompurify";
 
 type PageProps = {
     params: Promise<{
@@ -13,20 +14,26 @@ type PageProps = {
     }>;
 };
 
+
+
 const BASE_URL = "https://agenciaplanner.com";
 const SITE_NAME = "Agência Planner";
 
 async function getFeaturedImage(href: string): Promise<string | null> {
-    const res = await fetch(href, { cache: "no-store" });
-    if (!res.ok) return null;
-    const data = await res.json();
-    return data?.source_url ?? null;
+    try {
+        const res = await fetch(href, { next: { revalidate: 3600 } });
+        if (!res.ok) return null;
+        const data = await res.json();
+        return data?.source_url ?? null;
+    } catch {
+        return null;
+    }
 }
 
 async function getPost(slug: string): Promise<WPPost | null> {
     const res = await fetch(
         `https://head.agenciaplanner.dev/wp-json/wp/v2/postes?slug=${slug}`,
-        { cache: "no-store" }
+        { next: { revalidate: 3600 } }
     );
     if (!res.ok) return null;
     const data: WPPost[] = await res.json();
@@ -121,6 +128,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 // ────────────────────────────────────────────────────────────────────────────
 
+
+
 export default async function Page({ params }: PageProps) {
     const { slug } = await params;
     const decodedSlug = decodeURIComponent(slug);
@@ -154,8 +163,9 @@ export default async function Page({ params }: PageProps) {
                     </div>
 
                     <h1 className="text-[48px] pb-[13px] font-extrabold leading-[1.1]"
-                        dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.title.rendered) }}
                     />
+
 
                     <PostData post={post} />
                     <Equipe post={post} />

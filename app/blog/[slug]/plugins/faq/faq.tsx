@@ -16,9 +16,12 @@ export default function FAQ({ post }: Props) {
 
                     {/* LADO ESQUERDO */}
                     <div className="lg:sticky lg:top-10 w-full lg:w-auto text-center lg:text-left">
-                        <h1 className="hidden lg:block text-[150px] xl:text-[300px] font-bold leading-none select-none opacity-10 lg:opacity-100">
+                        <span
+                            aria-hidden="true"
+                            className="hidden lg:block text-[150px] xl:text-[300px] font-bold leading-none select-none opacity-10 lg:opacity-100"
+                        >
                             {tituloGigante}
-                        </h1>
+                        </span>
 
                         <p className="text-[32px] md:text-[45px] lg:text-[60px] lg:mt-[-50px] leading-[1.1] font-medium text-black">
                             {subtitulo}
@@ -31,10 +34,10 @@ export default function FAQ({ post }: Props) {
                         {/* ITEM 1 */}
                         <div className="bg-[#F3F7FA] rounded-[20px] p-5 md:p-6 group cursor-pointer transition-all duration-300 hover:shadow-md">
                             <div className="flex justify-between items-center gap-4">
-                                <h3 className="text-[18px] md:text-[20px] font-bold text-gray-800 leading-tight">
+                                <h2 className="text-[18px] md:text-[20px] font-bold text-gray-800 leading-tight">
                                     {post.meta.p1r1}
 
-                                </h3>
+                                </h2>
 
                                 <div className="bg-black w-[40px] h-[40px] md:w-[50px] md:h-[50px] flex items-center justify-center rounded-[12px] shrink-0 transition-transform duration-300 group-hover:rotate-90">
                                     <ChevronRight className="text-white w-5 h-5 md:w-6 md:h-6" />
@@ -51,9 +54,9 @@ export default function FAQ({ post }: Props) {
                         {/* ITEM 2 */}
                         <div className="bg-[#F3F7FA] rounded-[20px] p-5 md:p-6 group cursor-pointer transition-all duration-300 hover:shadow-md">
                             <div className="flex justify-between items-center gap-4">
-                                <h3 className="text-[18px] md:text-[22px] font-bold text-gray-800 leading-tight">
+                                <h2 className="text-[18px] md:text-[22px] font-bold text-gray-800 leading-tight">
                                     {post.meta._p2}
-                                </h3>
+                                </h2>
 
                                 <div className="bg-black w-[40px] h-[40px] md:w-[50px] md:h-[50px] flex items-center justify-center rounded-[12px] shrink-0 transition-transform duration-300 group-hover:rotate-90">
                                     <ChevronRight className="text-white w-5 h-5 md:w-6 md:h-6" />
@@ -70,9 +73,9 @@ export default function FAQ({ post }: Props) {
                         {/* ITEM 3 */}
                         <div className="bg-[#F3F7FA] rounded-[20px] p-5 md:p-6 group cursor-pointer transition-all duration-300 hover:shadow-md">
                             <div className="flex justify-between items-center gap-4">
-                                <h3 className="text-[18px] md:text-[22px] font-bold text-gray-800 leading-tight">
+                                <h2 className="text-[18px] md:text-[22px] font-bold text-gray-800 leading-tight">
                                     {post.meta.p3}
-                                </h3>
+                                </h2>
 
                                 <div className="bg-black w-[40px] h-[40px] md:w-[50px] md:h-[50px] flex items-center justify-center rounded-[12px] shrink-0 transition-transform duration-300 group-hover:rotate-90">
                                     <ChevronRight className="text-white w-5 h-5 md:w-6 md:h-6" />
@@ -89,9 +92,9 @@ export default function FAQ({ post }: Props) {
                         {/* ITEM 4 */}
                         <div className="bg-[#F3F7FA] rounded-[20px] p-5 md:p-6 group cursor-pointer transition-all duration-300 hover:shadow-md">
                             <div className="flex justify-between items-center gap-4">
-                                <h3 className="text-[18px] md:text-[22px] font-bold text-gray-800 leading-tight">
+                                <h2 className="text-[18px] md:text-[22px] font-bold text-gray-800 leading-tight">
                                     {post.meta.p4}
-                                </h3>
+                                </h2>
 
                                 <div className="bg-black w-[40px] h-[40px] md:w-[50px] md:h-[50px] flex items-center justify-center rounded-[12px] shrink-0 transition-transform duration-300 group-hover:rotate-90">
                                     <ChevronRight className="text-white w-5 h-5 md:w-6 md:h-6" />

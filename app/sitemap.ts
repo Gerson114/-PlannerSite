@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { unstable_cache } from 'next/cache'
 
 const BASE_URL = 'https://agenciaplanner.com'
 const WP_API = 'https://head.agenciaplanner.dev/wp-json/wp/v2/postes'
@@ -6,41 +7,47 @@ const WP_API = 'https://head.agenciaplanner.dev/wp-json/wp/v2/postes'
 interface WPPostBasic {
   slug: string
   modified_gmt: string
+  date_gmt: string
 }
 
-async function getAllPostSlugs(): Promise<WPPostBasic[]> {
-  try {
-    // Busca até 100 posts por página, percorre todas as páginas
-    const posts: WPPostBasic[] = []
-    let page = 1
+// Cache dos slugs dos posts — válido por 1h, invalidável via tag 'wp-posts'
+const getCachedPostSlugs = unstable_cache(
+  async (): Promise<WPPostBasic[]> => {
+    try {
+      const posts: WPPostBasic[] = []
+      let page = 1
 
-    while (true) {
-      const res = await fetch(
-        `${WP_API}?per_page=100&page=${page}&_fields=slug,modified_gmt`,
-        { next: { revalidate: 3600 } } // revalida a cada 1 hora
-      )
+      while (true) {
+        const res = await fetch(
+          `${WP_API}?per_page=100&page=${page}&_fields=slug,modified_gmt,date_gmt`,
+          { cache: 'no-store' } // sem cache no fetch — o controle de cache é feito pelo unstable_cache
+        )
 
-      if (!res.ok) break
+        if (!res.ok) break
 
-      const data: WPPostBasic[] = await res.json()
-      if (data.length === 0) break
+        const data: WPPostBasic[] = await res.json()
+        if (data.length === 0) break
 
-      posts.push(...data)
+        posts.push(...data)
 
-      // Verifica se há mais páginas
-      const totalPages = Number(res.headers.get('X-WP-TotalPages') ?? '1')
-      if (page >= totalPages) break
-      page++
+        const totalPages = Number(res.headers.get('X-WP-TotalPages') ?? '1')
+        if (page >= totalPages) break
+        page++
+      }
+
+      return posts
+    } catch {
+      return []
     }
-
-    return posts
-  } catch {
-    return []
+  },
+  ['wp-posts-sitemap'],   // chave única do cache
+  {
+    revalidate: 3600,     // fallback de 1h - cache quebrado imediatamente pelo webhook do WordPress
+    tags: ['wp-posts'],
   }
-}
+)
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Páginas estáticas fixas
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
@@ -80,12 +87,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  // Posts do WordPress — gerados dinamicamente
-  const posts = await getAllPostSlugs()
+  // Posts do WordPress — servidos do cache, atualizados via webhook ou a cada 1h
+  const posts = await getCachedPostSlugs()
   const postPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: post.modified_gmt ? new Date(post.modified_gmt) : new Date(),
-    changeFrequency: 'weekly',
+    lastModified: post.modified_gmt
+      ? new Date(post.modified_gmt)
+      : new Date(post.date_gmt ?? Date.now()),
+    changeFrequency: 'weekly' as const,
     priority: 0.7,
   }))
 
